@@ -31,15 +31,18 @@ namespace SuperMemo.SM2.Implementation
     {
         private const int FirstInterval = 0;
         private const int SecondInterval = 3;
+        private const double MinEF = 1.3;
 
         public static DateTime GetNextDate(Card card, Score score)
         {
-            return DateTime.Now;
+            var newCard = UpdateCard(card, score);
+            return newCard.NextTrainingDate;
         }
 
         public static int GetInterval(Card card, Score score)
         {
-            return 1;
+            var newCard = UpdateCard(card, score);
+            return newCard.LastInterval;
         }
 
         public static Card InitCard(Card card)
@@ -67,19 +70,19 @@ namespace SuperMemo.SM2.Implementation
             if (card.NumberOfRepetitions == 1)
             {
                 card.LastInterval = FirstInterval;
-                card.NextTrainingDate = DateTime.Now.Date.AddDays(card.LastInterval);
-                return card;
             }
-            if (card.NumberOfRepetitions == 2)
+            else if (card.NumberOfRepetitions == 2)
             {
                 card.LastInterval = SecondInterval;
-                card.NextTrainingDate = DateTime.Now.Date.AddDays(card.LastInterval);
-                return card;
             }
-            //Calculate new EF
-            card.EFactor = CalculateNextEFactor(card.EFactor, score);
-            //Calculate and return new interval
-            card.LastInterval = CalculateNextInterval(card, score);
+            else
+            {
+                //Calculate new EF
+                card.EFactor = CalculateNextEFactor(card.EFactor, score);
+                //Calculate and return new interval
+                card.LastInterval = CalculateNextInterval(card.LastInterval, card.EFactor);
+            }
+            card.NextTrainingDate = DateTime.Now.Date.AddDays(card.LastInterval);
             return card;
         }
 
@@ -94,12 +97,15 @@ namespace SuperMemo.SM2.Implementation
 
         private static double CalculateNextEFactor(double eFactor, Score score)
         {
-            return eFactor;
+            //EF':=EF+(0.1-(5-q)*(0.08+(5-q)*0.02))
+            var q = (int) score;
+            var newEF = eFactor + (0.1 - (5 - q)*(0.08 + (5 - q)*0.02));
+            return newEF < MinEF ? MinEF : newEF;
         }
 
-        private static int CalculateNextInterval(Card card, Score score)
+        private static int CalculateNextInterval(int lastInterval, double eFactor)
         {
-            return 1;
+            return (int)Math.Ceiling(lastInterval * eFactor);
         }
     }
 }
