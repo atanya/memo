@@ -1,5 +1,12 @@
 ﻿@model SuperMemo.Models.LoginInfoModel
 
+@if (Model != null && Model.ErrorMessage != null)
+{
+    <p>
+        <span>@Model.ErrorMessage</span>
+    </p>
+}
+
 @using (Html.BeginForm())
 {
     <p><span>Имя:</span></p>

@@ -33,6 +33,32 @@ namespace SuperMemo.Controllers
                     SetCookie(user);
                     return RedirectToAction("Index", "Home");
                 }
+                loginInfo.ErrorMessage = "Нет пользователя с таким именем/паролем.";
+                return View(loginInfo);
+            }
+            return View(loginInfo);
+        }
+
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Register(LoginInfoModel loginInfo)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = _userService.FindByName(loginInfo.UserName);
+                if (user != null)
+                {
+                    loginInfo.ErrorMessage = "Пользователь с таким именем уже существует.";
+                    return View(loginInfo);
+                }
+                _userService.Create(loginInfo.UserName, loginInfo.Password);
+                user = _userService.FindByNameAndPassword(loginInfo.UserName, loginInfo.Password);
+                SetCookie(user);
+                return RedirectToAction("Index", "Home");
             }
             return View(loginInfo);
         }
@@ -47,24 +73,6 @@ namespace SuperMemo.Controllers
             {
                 Response.Cookies.Add(CreateCookie(user));
             }
-        }
-
-        public ActionResult Register()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Register(LoginInfoModel loginInfo)
-        {
-            if (ModelState.IsValid)
-            {
-                _userService.Create(loginInfo.UserName, loginInfo.Password);
-                var user = _userService.FindByNameAndPassword(loginInfo.UserName, loginInfo.Password);
-                SetCookie(user);
-                return RedirectToAction("Index", "Home");
-            }
-            return View(loginInfo);
         }
 
         private static HttpCookie CreateCookie(User user)

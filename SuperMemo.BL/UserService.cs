@@ -33,7 +33,12 @@ namespace SuperMemo.BL
             _userRepo.Add(new User {Name = userName, PasswordHash = passwordHash});
         }
 
-        public static string ComputeMd5Hash(string userName, string password)
+        public User FindByName(string userName)
+        {
+            return _userRepo.GetSingle(_ => _.Name == userName);
+        }
+
+        private static string ComputeMd5Hash(string userName, string password)
         {
             var md5 = new MD5CryptoServiceProvider();
             var hashBytes = md5.ComputeHash(Encoding.UTF8.GetBytes(userName + password));
