@@ -1,28 +1,8 @@
 ﻿using System;
+using SuperMemo.DomainModel;
 
 namespace SuperMemo.SM2.Implementation
 {
-    public enum Score
-    {
-        None = 0,
-        Hard = 3,
-        Medium = 4,
-        Easy = 5
-    }
-    public class Card
-    {
-        public string Word;
-        public string Translation;
-        public DateTime? LastTrainingDate;
-        public Score Score;
-        public int LastInterval;
-        public int NumberOfRepetitions;
-        public double EFactor;
-        public DateTime NextTrainingDate;
-    }
-
-
-
     public static class Algorithm
     {
         private const int FirstInterval = 0;
@@ -32,7 +12,7 @@ namespace SuperMemo.SM2.Implementation
         public static DateTime GetNextDate(Card card, Score score)
         {
             var newCard = UpdateCard(card, score);
-            return newCard.NextTrainingDate;
+            return newCard.NextDate;
         }
 
         public static int GetInterval(Card card, Score score)
@@ -48,7 +28,7 @@ namespace SuperMemo.SM2.Implementation
             card.LastInterval = 0;
             card.NumberOfRepetitions = 0;
             card.EFactor = 2.5;
-            card.NextTrainingDate = DateTime.Now.Date;
+            card.NextDate = DateTime.Now.Date;
             return card;
         }
 
@@ -78,7 +58,7 @@ namespace SuperMemo.SM2.Implementation
                 //Calculate and return new interval
                 card.LastInterval = CalculateNextInterval(card.LastInterval, card.EFactor);
             }
-            card.NextTrainingDate = DateTime.Now.Date.AddDays(card.LastInterval);
+            card.NextDate = DateTime.Now.Date.AddDays(card.LastInterval);
             return card;
         }
 
@@ -87,15 +67,15 @@ namespace SuperMemo.SM2.Implementation
             card.EFactor = 2.5;
             card.NumberOfRepetitions = 0;
             card.LastInterval = 0;
-            card.NextTrainingDate = DateTime.Now.Date.AddDays(1);
+            card.NextDate = DateTime.Now.Date.AddDays(1);
             return card;
         }
 
         private static double CalculateNextEFactor(double eFactor, Score score)
         {
             //EF':=EF+(0.1-(5-q)*(0.08+(5-q)*0.02))
-            var q = (int) score;
-            var newEF = eFactor + (0.1 - (5 - q)*(0.08 + (5 - q)*0.02));
+            var q = (int)score;
+            var newEF = eFactor + (0.1 - (5 - q) * (0.08 + (5 - q) * 0.02));
             return newEF < MinEF ? MinEF : newEF;
         }
 
