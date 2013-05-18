@@ -16,7 +16,7 @@ namespace SuperMemo.Controllers
         }
 
         // GET api/<controller>/5
-        public string Get(int id)
+        public string Get(string id)
         {
             return "value";
         }
@@ -26,13 +26,8 @@ namespace SuperMemo.Controllers
         {
         }
 
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
         // DELETE api/<controller>/5
-        public void Delete(int id)
+        public void Delete(string id)
         {
         }
     }
