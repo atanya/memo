@@ -49,9 +49,6 @@
     <Reference Include="MongoRepository">
       <HintPath>..\packages\MongoRepository.1.4.3\lib\MongoRepository.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.5.0.5\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -185,6 +182,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Index.cshtml" />
+    <ProjectReference Include="..\DomainModel\DomainModel.csproj">
+      <Project>{AE99D246-863D-42F2-9743-FA651EE5AB54}</Project>
+      <Name>DomainModel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SuperMemo.BL\SuperMemo.BL.csproj">
       <Project>{C51901A8-4534-4F1C-BA88-897387BDC2FF}</Project>
       <Name>SuperMemo.BL</Name>

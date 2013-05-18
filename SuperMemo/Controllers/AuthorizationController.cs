@@ -3,7 +3,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using SuperMemo.BL;
-using SuperMemo.BL.Entities;
+using SuperMemo.DomainModel;
 using SuperMemo.Models;
 
 namespace SuperMemo.Controllers
