@@ -1,14 +1,11 @@
 ﻿using System.Web.Mvc;
+using SuperMemo.ActionFilters;
 
 namespace SuperMemo.Controllers
 {
+    [AuthorizationFilter]
     public class HomeController : Controller
     {
-        public HomeController()
-        {
-            
-        }
-
         public ActionResult Index()
         {
             return View();
