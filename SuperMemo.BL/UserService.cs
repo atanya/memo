@@ -7,25 +7,45 @@ namespace SuperMemo.BL
 {
     public class UserService
     {
+        private readonly IRepository<User> _userRepo;
+
+        public UserService()
+        {
+            _userRepo = new MongoRepository<User>();
+        }
+
         public User FindByNameAndPassword(string userName, string password)
         {
             var passwordHash = ComputeMd5Hash(userName, password);
-            var userRepo = new MongoRepository<User>();
-            return userRepo.GetSingle(_ => _.PasswordHash == passwordHash);
+            
+            return _userRepo.GetSingle(_ => _.PasswordHash == passwordHash);
+        }
+
+        public User FindByHash(string hash)
+        {
+            return _userRepo.GetSingle(_ => _.PasswordHash == hash);
         }
 
         public void Create(string userName, string password)
         {
             var passwordHash = ComputeMd5Hash(userName, password);
-            var userRepo = new MongoRepository<User>();
-            userRepo.Add(new User {Name = userName, PasswordHash = passwordHash});
+            
+            _userRepo.Add(new User {Name = userName, PasswordHash = passwordHash});
         }
 
-        private static string ComputeMd5Hash(string userName, string password)
+        public static string ComputeMd5Hash(string userName, string password)
         {
             var md5 = new MD5CryptoServiceProvider();
             var hashBytes = md5.ComputeHash(Encoding.UTF8.GetBytes(userName + password));
-            return Encoding.UTF8.GetString(hashBytes);
+            
+            var sBuilder = new StringBuilder();
+
+            foreach (var b in hashBytes)
+            {
+                sBuilder.Append(b.ToString("x2"));
+            }
+
+            return sBuilder.ToString();
         }
     }
 }

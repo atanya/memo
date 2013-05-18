@@ -1,0 +1,19 @@
+﻿@model SuperMemo.Models.LoginInfoModel
+
+@using (Html.BeginForm())
+{
+    <p><span>Имя:</span></p>
+    <p>
+        @Html.TextBoxFor(m => m.UserName)
+        @Html.ValidationMessageFor(m => m.UserName)
+    </p>
+    <p><span>Пароль:</span></p>
+    <p>
+        @Html.TextBoxFor(m => m.Password, new {type = "password"})
+        @Html.ValidationMessageFor(m => m.Password)
+    </p>
+    <p>
+        <button type="submit">Войти</button>
+        <a href="@Url.Action("Register", "Authorization")">Зарегаться</a>
+    </p>
+}
