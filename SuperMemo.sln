@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperMemo", "SuperMemo\SuperMemo.csproj", "{F5FE3AA9-2226-4119-835B-781C2AD26B6C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperMemo.Dal", "SuperMemo.Dal\SuperMemo.Dal.csproj", "{3CE5DBEB-4895-480E-AD16-27259C067D28}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperMemo.BL", "SuperMemo.BL\SuperMemo.BL.csproj", "{C51901A8-4534-4F1C-BA88-897387BDC2FF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,10 +15,10 @@ Global
 		{F5FE3AA9-2226-4119-835B-781C2AD26B6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5FE3AA9-2226-4119-835B-781C2AD26B6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5FE3AA9-2226-4119-835B-781C2AD26B6C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3CE5DBEB-4895-480E-AD16-27259C067D28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3CE5DBEB-4895-480E-AD16-27259C067D28}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3CE5DBEB-4895-480E-AD16-27259C067D28}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3CE5DBEB-4895-480E-AD16-27259C067D28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C51901A8-4534-4F1C-BA88-897387BDC2FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C51901A8-4534-4F1C-BA88-897387BDC2FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C51901A8-4534-4F1C-BA88-897387BDC2FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C51901A8-4534-4F1C-BA88-897387BDC2FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
