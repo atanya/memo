@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using SuperMemo.ActionFilters;
 using SuperMemo.BL;
 using SuperMemo.BL.Entities;
 using SuperMemo.Models;
@@ -61,6 +62,13 @@ namespace SuperMemo.Controllers
                 return RedirectToAction("Index", "Home");
             }
             return View(loginInfo);
+        }
+
+        [AuthorizationFilter]
+        public ActionResult Logout()
+        {
+            Response.Cookies.Set(new HttpCookie("SuperMemoSession") {Expires = DateTime.Now.AddDays(-1)});
+            return RedirectToAction("Login");
         }
 
         private void SetCookie(User user)
