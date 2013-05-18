@@ -4,21 +4,25 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using SuperMemo.BL;
 
 namespace SuperMemo.Controllers
 {
-    public class Main : ApiController
+    public class MainController : ApiController
     {
         // GET api/<controller>
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            ITranslator t = new Translator();
+
+            return new string[] { "hello", "value2" };
         }
 
         // GET api/<controller>/5
         public string Get(string id)
         {
-            return "value";
+            ITranslator t = new Translator();
+            return t.Translate(id);
         }
 
         // POST api/<controller>
