@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperMemo.BL.Tests", "Super
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperMemo.SM2.Implementation", "SuperMemo.SM2.Implementation\SuperMemo.SM2.Implementation.csproj", "{D133D694-C1F8-43AA-A313-28519A81A347}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainModel", "DomainModel\DomainModel.csproj", "{AE99D246-863D-42F2-9743-FA651EE5AB54}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{D133D694-C1F8-43AA-A313-28519A81A347}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D133D694-C1F8-43AA-A313-28519A81A347}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D133D694-C1F8-43AA-A313-28519A81A347}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE99D246-863D-42F2-9743-FA651EE5AB54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE99D246-863D-42F2-9743-FA651EE5AB54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE99D246-863D-42F2-9743-FA651EE5AB54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE99D246-863D-42F2-9743-FA651EE5AB54}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

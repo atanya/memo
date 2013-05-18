@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using MongoRepository;
 
-namespace SuperMemo.BL.Entities
+namespace SuperMemo.DomainModel
 {
     public class User : Entity
     {

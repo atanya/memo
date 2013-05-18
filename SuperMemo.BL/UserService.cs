@@ -1,7 +1,7 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
 using MongoRepository;
-using SuperMemo.BL.Entities;
+using SuperMemo.DomainModel;
 
 namespace SuperMemo.BL
 {
