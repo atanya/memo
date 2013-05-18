@@ -113,7 +113,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\main.cs" />
+    <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -155,6 +155,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Skins\Styles\styles.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SuperMemo.BL\SuperMemo.BL.csproj">
+      <Project>{C51901A8-4534-4F1C-BA88-897387BDC2FF}</Project>
+      <Name>SuperMemo.BL</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
