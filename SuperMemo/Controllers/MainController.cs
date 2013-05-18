@@ -8,6 +8,10 @@ using SuperMemo.BL;
 
 namespace SuperMemo.Controllers
 {
+    public class ResponseObject
+    {
+        public string Data { get; set; }
+    }
     public class MainController : ApiController
     {
         // GET api/<controller>
@@ -19,10 +23,10 @@ namespace SuperMemo.Controllers
         }
 
         // GET api/<controller>/5
-        public string Get(string id)
+        public ResponseObject Get(string id)
         {
             ITranslator t = new Translator();
-            return t.Translate(id);
+            return new ResponseObject {Data = t.Translate(id)};
         }
 
         // POST api/<controller>
