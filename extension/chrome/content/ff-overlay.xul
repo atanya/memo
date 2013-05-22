@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://mysupermemo/skin/overlay.css" type="text/css"?>
+<!DOCTYPE overlay SYSTEM "chrome://mysupermemo/locale/overlay.dtd">
+<overlay id="mysupermemo-overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <script src="jquery-1.9.1.min.js"/>
+  <script src="ff-overlay.js"/>
+  <stringbundleset id="stringbundleset">
+    <stringbundle id="mysupermemo-strings" src="chrome://mysupermemo/locale/overlay.properties"/>
+  </stringbundleset>
+  <popup id="contentAreaContextMenu">
+    <menuitem id="context-mysupermemo" label="&mysupermemoContext.label;"
+              accesskey="&mysupermemoContext.accesskey;"
+              insertafter="context-stop"
+              oncommand="mysupermemo.onMenuItemCommand(event)"/>
+  </popup>
+  <menupopup id="menu_ToolsPopup">
+    <menuitem id="mysupermemo-hello" label="&mysupermemo.label;"
+              oncommand="mysupermemo.onMenuItemCommand(event);"/>
+  </menupopup>
+</overlay>

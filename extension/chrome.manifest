@@ -1,0 +1,4 @@
+content   mysupermemo                 chrome/content/
+skin      mysupermemo   classic/1.0   chrome/skin/
+locale    mysupermemo   en-US         chrome/locale/en-US/
+overlay	chrome://browser/content/browser.xul	chrome://mysupermemo/content/ff-overlay.xul
