@@ -1,0 +1,8 @@
+<!ENTITY mysupermemo.label "Your localized menuitem">
+<!ENTITY mysupermemoContext.label "Your Menuitem">
+<!ENTITY mysupermemoContext.accesskey "Y">
+<!ENTITY mysupermemoToolbarButton.label "Your Toolbar Button">
+<!ENTITY mysupermemoToolbarButton.tooltip "This is your toolbar button!">
+<!ENTITY mysupermemoSidebar.label "Your Sidebar">
+<!ENTITY mysupermemoToolbar.name  "example">
+<!ENTITY mysupermemoToolbar.label "This is an example toolbar. You can hide it under View &gt; toolbars &gt; &mysupermemoToolbar.name;">
