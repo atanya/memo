@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperMemo", "SuperMemo\SuperMemo.csproj", "{F5FE3AA9-2226-4119-835B-781C2AD26B6C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperMemo.Dal", "SuperMemo.Dal\SuperMemo.Dal.csproj", "{3CE5DBEB-4895-480E-AD16-27259C067D28}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperMemo.BL", "SuperMemo.BL\SuperMemo.BL.csproj", "{C51901A8-4534-4F1C-BA88-897387BDC2FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperMemo.BL.Tests", "SuperMemo.BL.Tests\SuperMemo.BL.Tests.csproj", "{DAE1D526-A7F7-4392-8C8A-A7B2DA8A8A09}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperMemo.SM2.Implementation", "SuperMemo.SM2.Implementation\SuperMemo.SM2.Implementation.csproj", "{D133D694-C1F8-43AA-A313-28519A81A347}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainModel", "DomainModel\DomainModel.csproj", "{AE99D246-863D-42F2-9743-FA651EE5AB54}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,10 +21,22 @@ Global
 		{F5FE3AA9-2226-4119-835B-781C2AD26B6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5FE3AA9-2226-4119-835B-781C2AD26B6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5FE3AA9-2226-4119-835B-781C2AD26B6C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3CE5DBEB-4895-480E-AD16-27259C067D28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3CE5DBEB-4895-480E-AD16-27259C067D28}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3CE5DBEB-4895-480E-AD16-27259C067D28}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3CE5DBEB-4895-480E-AD16-27259C067D28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C51901A8-4534-4F1C-BA88-897387BDC2FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C51901A8-4534-4F1C-BA88-897387BDC2FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C51901A8-4534-4F1C-BA88-897387BDC2FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C51901A8-4534-4F1C-BA88-897387BDC2FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAE1D526-A7F7-4392-8C8A-A7B2DA8A8A09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAE1D526-A7F7-4392-8C8A-A7B2DA8A8A09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAE1D526-A7F7-4392-8C8A-A7B2DA8A8A09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAE1D526-A7F7-4392-8C8A-A7B2DA8A8A09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D133D694-C1F8-43AA-A313-28519A81A347}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D133D694-C1F8-43AA-A313-28519A81A347}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D133D694-C1F8-43AA-A313-28519A81A347}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D133D694-C1F8-43AA-A313-28519A81A347}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE99D246-863D-42F2-9743-FA651EE5AB54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE99D246-863D-42F2-9743-FA651EE5AB54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE99D246-863D-42F2-9743-FA651EE5AB54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE99D246-863D-42F2-9743-FA651EE5AB54}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("SuperMemo.Dal")]
+[assembly: AssemblyTitle("SuperMemo.SM2.Implementation")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("SuperMemo.Dal")]
+[assembly: AssemblyProduct("SuperMemo.SM2.Implementation")]
 [assembly: AssemblyCopyright("Copyright ©  2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("3aeef925-5dc3-43cf-953b-55acc6c87a25")]
+[assembly: Guid("89e038ce-62d4-4930-8c8a-ed15e267acd5")]
 
 // Version information for an assembly consists of the following four values:
 //
