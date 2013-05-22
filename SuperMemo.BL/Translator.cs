@@ -1,5 +1,7 @@
-﻿using System.IO;
+﻿using System.Configuration;
+using System.IO;
 using System.Net;
+using System.Security;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
@@ -7,21 +9,6 @@ using System.Web.Script.Serialization;
 
 namespace SuperMemo.BL
 {
-    public static partial class Secret
-    {
-        private static string clientId;
-        public static string ClientID
-        {
-            get { return clientId; }
-        }
-
-        private static string clientSecret;
-        public static string ClientSecret
-        {
-            get { return clientSecret; }
-        }
-    }
-
     public class Translator : ITranslator
     {
         private class AdmAccessToken
@@ -37,10 +24,16 @@ namespace SuperMemo.BL
 
         private static string Connect()
         {
+            var clientId = ConfigurationManager.AppSettings["ClientId"];
+            var clientSecret = ConfigurationManager.AppSettings["ClientSecret"];
+            if (string.IsNullOrEmpty(clientId) || string.IsNullOrEmpty(clientSecret))
+            {
+                throw new SecurityException("MS Translator configuration missed");
+            }
             var strRequestDetails =
                 string.Format(
                     "grant_type=client_credentials&client_id={0}&client_secret={1}&scope=http://api.microsofttranslator.com",
-                    HttpUtility.UrlEncode(Secret.ClientID), HttpUtility.UrlEncode(Secret.ClientSecret));
+                    HttpUtility.UrlEncode(clientId), HttpUtility.UrlEncode(clientSecret));
             var webRequest = WebRequest.Create(authUrl);
             webRequest.ContentType = "application/x-www-form-urlencoded";
             webRequest.Method = "POST";

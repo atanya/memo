@@ -164,4 +164,4 @@ pip-log.txt
 .DS_Store
 
 # Application
-*Secret.cs
+*Web.config
