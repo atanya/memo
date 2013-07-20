@@ -8,23 +8,56 @@ namespace SuperMemo.BL
 {
     public class CardService
     {
-        public void Create(string word, string translation)
+        private MongoRepository<Card> cardRepo;
+
+        public CardService()
+        {
+            cardRepo = new MongoRepository<Card>();
+        }
+
+        public void Save(string word, string translation)
+        {
+            var card = GetCardByContent(word);
+            if (card == null)
+            {
+                Create(word, translation);
+            }
+            else
+            {
+                Update(card, translation);
+            }
+        }
+
+        private void Create(string word, string translation)
         {
             var card = new Card {Word = word, Translation = translation};
             card = Algorithm.InitCard(card);
-            var cardRepo = new MongoRepository<Card>();
             cardRepo.Add(card);
-            }
+        }
+
+        private void Update(Card card, string translation)
+        {
+            card.Translation = translation;
+            cardRepo.Update(card);
+        }
 
         public List<Card> List()
         {
-            var cardRepo = new MongoRepository<Card>();
             return cardRepo.All().ToList();
         }
 
-        public void Delete(Card card)
+        public void Delete(string word)
         {
+             var card = GetCardByContent(word);
+            if (card != null)
+            {
+                cardRepo.Delete(card);
+            }
+        }
 
+        private Card GetCardByContent(string word)
+        {
+            return cardRepo.GetSingle(c => c.Word == word);
         }
     }
 }

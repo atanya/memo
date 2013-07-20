@@ -1,5 +1,7 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Web.Mvc;
 using SuperMemo.BL;
+using SuperMemo.DomainModel;
 using SuperMemo.Models;
 
 namespace SuperMemo.Controllers
@@ -25,8 +27,17 @@ namespace SuperMemo.Controllers
         public ActionResult Save(CardViewModel card)
         {
             var cardService = new CardService();
-            cardService.Create(card.Word, card.Translation);
+            cardService.Save(card.Word, card.Translation);
             return Json("success");
+        }
+
+        [HttpGet]
+        public ActionResult List()
+        {
+            var cardService = new CardService();
+            var list = cardService.List();
+            var model = new CardListViewModel {Cards = list ?? new List<Card>()};
+            return View("List", model);
         }
     }
 }

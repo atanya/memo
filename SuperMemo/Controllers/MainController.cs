@@ -32,7 +32,7 @@ namespace SuperMemo.Controllers
         // POST api/<controller>
         public void Post([FromBody]string word, [FromBody]string translation)
         {
-            new CardService().Create(word, translation);
+            new CardService().Save(word, translation);
         }
 
         // DELETE api/<controller>/5

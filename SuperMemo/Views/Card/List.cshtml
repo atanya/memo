@@ -1,0 +1,15 @@
+﻿@model SuperMemo.Models.CardListViewModel
+
+@{
+    ViewBag.Title = "List Card";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script type="text/javascript" src="@Url.Content("~/Scripts/cup.js")"></script>
+
+<h2>List of Cards</h2>
+@foreach (var card in Model.Cards)
+{
+    <div>@card.Word</div>
+    <div>@card.Translation</div>
+    <div><a href="#">Remove</a></div>
+}
