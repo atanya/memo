@@ -1,0 +1,1 @@
+﻿window.superMemo = window.superMemo || {};

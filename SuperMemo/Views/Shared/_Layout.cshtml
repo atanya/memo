@@ -6,6 +6,15 @@
         <link href="@Url.Content("~/Skins/Styles/styles.css")" rel="stylesheet" type="text/css" />
         <script type="text/javascript" src="@Url.Content("~/Scripts/jquery-1.9.1.min.js")"></script>
         <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.validate.min.js")"></script>
+        <script type="text/javascript" src="@Url.Content("~/Scripts/namespace.js")"></script>
+        <script type="text/javascript" src="@Url.Content("~/Scripts/proxy.js")"></script>
+        
+        
+    <script type="text/javascript">
+        superMemo.urls = {
+            saveCup: '@Url.Action("Save", "Card")'
+        };
+    </script>
     </head>
     <body>
         <h1>Memo</h1>
