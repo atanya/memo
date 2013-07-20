@@ -1,0 +1,14 @@
+body #menuDiv {
+  height: 20px;
+  width: 100%; }
+body .top-menu {
+  list-style: none outside none;
+  margin: 0;
+  padding: 0; }
+  body .top-menu li {
+    float: left;
+    margin-right: 20px; }
+    body .top-menu li a {
+      text-decoration: none;
+      color: #000; }
+
