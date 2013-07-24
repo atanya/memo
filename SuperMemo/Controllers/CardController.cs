@@ -39,5 +39,13 @@ namespace SuperMemo.Controllers
             var model = new CardListViewModel {Cards = list ?? new List<Card>()};
             return View("List", model);
         }
+
+        [HttpPost]
+        public ActionResult Delete(string word)
+        {
+            var cardService = new CardService();
+            cardService.Delete(word);
+            return Json("success");
+        }
     }
 }

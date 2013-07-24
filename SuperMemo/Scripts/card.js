@@ -8,5 +8,19 @@
             alert("failure");
         });
     };
+
+    var viewModel = {
+        removeCup: function(func, event) {
+            var word = $(event.currentTarget).closest("tr").find("td:first-child").text();
+            superMemo.proxy.removeCup(word, function(result) {
+                alert("success");
+            }, function(result) {
+                alert("failure");
+            });
+        }
+    };
+    ko.applyBindings(viewModel, document.getElementById('cardList'));
+
     $("#saveButton").click(saveCup);
+    //$("#removeButton").click(removeCup);
 })

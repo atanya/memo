@@ -10,6 +10,7 @@ using NUnit.Framework;
 namespace SuperMemo.BL.Tests
 {
     [TestFixture]
+    [Ignore]
     public class UserServiceTests
     {
         private void DropDB()

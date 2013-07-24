@@ -17,5 +17,11 @@
             Translation: translation
         };
         this.sendAjaxRequest(window.superMemo.urls.saveCup, data, onSuccessCallback, onFailureCallback);
+    },
+    removeCup: function (word, onSuccessCallback, onFailureCallback) {
+        var data = {
+            Word: word
+        };
+        this.sendAjaxRequest(window.superMemo.urls.removeCup, data, onSuccessCallback, onFailureCallback);
     }
 };

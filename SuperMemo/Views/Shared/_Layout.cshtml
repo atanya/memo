@@ -8,11 +8,13 @@
         <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.validate.min.js")"></script>
         <script type="text/javascript" src="@Url.Content("~/Scripts/namespace.js")"></script>
         <script type="text/javascript" src="@Url.Content("~/Scripts/proxy.js")"></script>
+        <script type="text/javascript" src="@Url.Content("~/Scripts/knockout-2.2.1.js")"></script>
         
         
     <script type="text/javascript">
         superMemo.urls = {
-            saveCup: '@Url.Action("Save", "Card")'
+            saveCup: '@Url.Action("Save", "Card")',
+            removeCup: '@Url.Action("Delete", "Card")'
         };
     </script>
     </head>
