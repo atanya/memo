@@ -6,15 +6,20 @@
 }
 <script type="text/javascript" src="@Url.Content("~/Scripts/card.js")"></script>
 
+<div id="cardList">
 <h2>List of Cards</h2>
-<table id="cardList">
-@foreach (var card in Model.Cards)
-{
-    <tr>
-        <td>@card.Word</td>
-        <td>@card.Translation</td>
-        <td><input type="button" id="updateButton" value="Update"/></td>
-        <td><input type="button" id="removeButton" value="Remove" data-bind="click: removeCup"/></td>
-    </tr>
-}
+<table id="cardTable">
+    @foreach (var card in Model.Cards)
+    {
+        <tr>
+            <td>@card.Word</td>
+            <td>@card.Translation</td>
+            <td><input type="button" value="Update" data-bind="click: updateCup" /></td>
+            <td><input type="button" value="Remove" data-bind="click: removeCup"/></td>
+        </tr>
+    }
 </table>
+
+<input type="button" value="Add new card"  data-bind="click: addCup"/>
+    
+</div>
