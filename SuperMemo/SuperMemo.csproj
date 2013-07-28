@@ -122,6 +122,7 @@
     <Compile Include="ActionFilters\AuthorizationFilter.cs" />
     <Compile Include="Controllers\AuthorizationController.cs" />
     <Compile Include="Controllers\CardController.cs" />
+    <Compile Include="Controllers\DrillController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Global.asax.cs">
@@ -172,6 +173,7 @@
     <Content Include="Views\Authorization\Register.cshtml" />
     <Content Include="Views\Card\EditCard.cshtml" />
     <Content Include="Views\Card\List.cshtml" />
+    <Content Include="Views\Drill\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
