@@ -5,9 +5,14 @@ namespace SuperMemo.SM2.Implementation
 {
     public static class Algorithm
     {
-        private const int FirstInterval = 0;
+        private const int FirstInterval = 1;
         private const int SecondInterval = 3;
         private const double MinEF = 1.3;
+
+        public static Card GetUpdatedCard(Card card, Score score)
+        {
+            return UpdateCard(card, score);
+        }
 
         public static DateTime GetNextDate(Card card, Score score)
         {
@@ -28,13 +33,13 @@ namespace SuperMemo.SM2.Implementation
             card.LastInterval = 0;
             card.NumberOfRepetitions = 0;
             card.EFactor = 2.5;
-            card.NextDate = DateTime.Now.Date;
+            card.NextDate = DateTime.UtcNow.Date;
             return card;
         }
 
         private static Card UpdateCard(Card card, Score score)
         {
-            card.LastTrainingDate = DateTime.Now.Date;
+            card.LastTrainingDate = DateTime.UtcNow.Date;
             card.Score = score;
             card.NumberOfRepetitions++;
             //If None - return interval
@@ -58,7 +63,7 @@ namespace SuperMemo.SM2.Implementation
                 //Calculate and return new interval
                 card.LastInterval = CalculateNextInterval(card.LastInterval, card.EFactor);
             }
-            card.NextDate = DateTime.Now.Date.AddDays(card.LastInterval);
+            card.NextDate = DateTime.UtcNow.Date.AddDays(card.LastInterval);
             return card;
         }
 
@@ -67,7 +72,7 @@ namespace SuperMemo.SM2.Implementation
             card.EFactor = 2.5;
             card.NumberOfRepetitions = 0;
             card.LastInterval = 0;
-            card.NextDate = DateTime.Now.Date.AddDays(1);
+            card.NextDate = DateTime.UtcNow.Date.AddDays(1);
             return card;
         }
 

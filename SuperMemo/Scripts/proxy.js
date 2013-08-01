@@ -23,5 +23,12 @@
             Word: word
         };
         this.sendAjaxRequest(window.superMemo.urls.removeCup, data, onSuccessCallback, onFailureCallback);
+    },
+    
+    getNextWord: function (answer, onSuccessCallback, onFailureCallback) {
+        var data = {
+            Answer: answer
+        };
+        this.sendAjaxRequest(window.superMemo.urls.getNextWord, data, onSuccessCallback, onFailureCallback);
     }
 };

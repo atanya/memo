@@ -120,6 +120,7 @@
     <Compile Include="App_Packages\TaskHelpers.Sources.0.2\TaskHelpersExtensions.cs" />
     <Compile Include="App_Start\FormatterConfig.cs" />
     <Compile Include="ActionFilters\AuthorizationFilter.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AuthorizationController.cs" />
     <Compile Include="Controllers\CardController.cs" />
     <Compile Include="Controllers\DrillController.cs" />
@@ -130,6 +131,7 @@
     </Compile>
     <Compile Include="Models\CardListViewModel.cs" />
     <Compile Include="Models\CardViewModel.cs" />
+    <Compile Include="Models\DrillViewModel.cs" />
     <Compile Include="Models\LoginInfoModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -142,6 +144,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.4.4-vsdoc.js" />
     <Content Include="Scripts\card.js" />
+    <Content Include="Scripts\drill.js" />
     <Content Include="Scripts\jquery-1.4.4.js" />
     <Content Include="Scripts\jquery-1.4.4.min.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
@@ -174,6 +177,7 @@
     <Content Include="Views\Card\EditCard.cshtml" />
     <Content Include="Views\Card\List.cshtml" />
     <Content Include="Views\Drill\Index.cshtml" />
+    <Content Include="Views\Admin\Dump.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -199,6 +203,10 @@
     <ProjectReference Include="..\SuperMemo.BL\SuperMemo.BL.csproj">
       <Project>{C51901A8-4534-4F1C-BA88-897387BDC2FF}</Project>
       <Name>SuperMemo.BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SuperMemo.SM2.Implementation\SuperMemo.SM2.Implementation.csproj">
+      <Project>{D133D694-C1F8-43AA-A313-28519A81A347}</Project>
+      <Name>SuperMemo.SM2.Implementation</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

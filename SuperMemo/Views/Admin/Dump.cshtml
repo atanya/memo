@@ -1,0 +1,49 @@
+﻿@model List<SuperMemo.DomainModel.Card>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Dump</title>
+    <style>
+        td {
+            border: black solid 1px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h2>Full List of Cards</h2>
+        <table id="cardTable">
+            <tr>
+                <th>Word</th>
+                <th>Translation</th>
+                <th>Score</th>
+                <th>EFactor</th>
+                <th>LastInterval</th>
+                <th>LastTrainingDate</th>
+                <th>NumberOfRepetitions</th>
+                <th>NextDate</th>
+            </tr>
+            @foreach (var card in Model)
+            {
+                <tr>
+                    <td>@card.Word</td>
+                    <td>@card.Translation</td>
+                    <td>@card.Score</td>
+                    <td>@card.EFactor</td>
+                    <td>@card.LastInterval</td>
+                    <td>@card.LastTrainingDate</td>
+                    <td>@card.NumberOfRepetitions</td>
+                    <td>@card.NextDate</td>
+                </tr>
+            }
+        </table>
+    </div>
+</body>
+</html>

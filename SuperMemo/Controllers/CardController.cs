@@ -17,9 +17,15 @@ namespace SuperMemo.Controllers
         [HttpGet]
         public ActionResult Edit(string word)
         {
-            ITranslator t = new Translator();
-            var translation = t.Translate(word);
-            var viewModel = new CardViewModel {Word = word, Translation = translation};
+            //ITranslator t = new Translator();
+            //var translation = t.Translate(word);
+            var cardService = new CardService();
+            var card = cardService.GetCardByContent(word);
+            if (card == null)
+            {
+                return RedirectToAction("Create");
+            }
+            var viewModel = new CardViewModel {Word = word, Translation = card.Translation};
             return View("EditCard", viewModel);
         }
 

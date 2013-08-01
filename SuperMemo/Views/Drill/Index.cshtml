@@ -1,26 +1,28 @@
 ﻿@{
-    Layout = null;
+    ViewBag.Title = "Edit Card";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<script type="text/javascript" src="@Url.Content("~/Scripts/drill.js")"></script>
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    <div>
-        English word
+<div id="drillPage">
+    <div id="mainWrapper" style="margin-top: 20px;" data-bind="visible: numberToRepeat">
+        <div>You need to repeat <span id="numberToRepeat" data-bind="text: numberToRepeat"></span> cards of <span id="totalCards" data-bind="text: totalWords"></span></div><br/>
+        <div>
+            <span id="wordPlace" data-bind="text: currentWord"></span>
+        </div>
+        <hr />
+        <div>
+            <a href="#" id="answerLink">Show answer</a>
+            <span id="transPlace" data-bind="text: currentTrans" style="display: none;"></span>
+        </div>
+        <br />
+        <button id="againBtn">Again</button>
+        <button id="badBtn">Bad</button>
+        <button id="goodBtn">Good</button>
+        <button id="perfectBtn">Excellent</button>
     </div>
-    <hr />
-    <div>
-        <a href="#">Show answer</a>
+    <div id="drillEndWrapper" data-bind="visible: numberToRepeat() == 0">
+        <h2>Congratulations!</h2>
+        No more words!
     </div>
-    <br />
-    <button>Again</button>
-    <button>Bad</button>
-    <button>Good</button>
-    <button>Excellent</button>
-</body>
-</html>
+</div>
