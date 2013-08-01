@@ -18,8 +18,7 @@ namespace SuperMemo.BL
         public List<Card> GetCardsForDrill()
         {
             var dateTime = DateTime.UtcNow.Date.AddDays(1);
-            //TODO: need to check how to remove first ToList - it seems that date in Mongo is compared incorrectly
-            return cardRepo.All().ToList().Where(card => card.NextDate < dateTime).ToList();
+            return cardRepo.All().Where(card => card.NextDate < dateTime).ToList();
         }
 
         public void UpdateCard(Card card)
