@@ -40,7 +40,6 @@
             if (confirm("Are you sure?")) {
                 var word = $(event.currentTarget).closest("tr").find("td:first-child").text();
                 superMemo.proxy.removeCup(word, function(result) {
-                    alert("success");
                     location.reload();
                 }, function(result) {
                     alert("failure");
