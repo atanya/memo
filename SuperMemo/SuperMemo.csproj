@@ -178,6 +178,7 @@
     <Content Include="Views\Card\List.cshtml" />
     <Content Include="Views\Drill\Index.cshtml" />
     <Content Include="Views\Admin\Dump.cshtml" />
+    <Content Include="Views\Shared\_NonLoggedLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

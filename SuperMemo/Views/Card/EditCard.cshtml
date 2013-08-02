@@ -10,13 +10,14 @@
 <div id="cardContentWrapper">
     <div id="wordDiv">
         <label>Word: </label>
-        <input type="text" id="wordInput" value="@Model.Word"/>
+        <input type="text" id="wordInput" value="@Model.Word"/><span id="wordValidation" style="color: red;"></span>
     </div>
     <div id="translationDiv">
         <label>Translation: </label>
-        <input type="text" id="translationInput" value="@Model.Translation"/>
+        <input type="text" id="translationInput" value="@Model.Translation"/><span id="translationValidation" style="color: red;"></span>
     </div>
     <div id="buttonsDiv">
         <input type="button" id="saveButton" value="@(string.IsNullOrEmpty(Model.Word) ? "Create" : "Update")"/>
+        <span id="messageLabel"></span>
     </div>
 </div>

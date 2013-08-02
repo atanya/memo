@@ -11,25 +11,9 @@
         <script type="text/javascript" src="@Url.Content("~/Scripts/proxy.js")"></script>
         <script type="text/javascript" src="@Url.Content("~/Scripts/knockout-2.2.1.js")"></script>
         <script type="text/javascript" src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
-        
-        
-    <script type="text/javascript">
-        superMemo.urls = {
-            saveCup: '@Url.Action("Save", "Card")',
-            removeCup: '@Url.Action("Delete", "Card")',
-            getNextWord: '@Url.Action("GetNextWord", "Drill")'
-        };
-    </script>
     </head>
     <body>
         <h1>Memo</h1>
-        <div id="menuDiv">
-            <ul class="top-menu">
-                <li><a href="@Url.Action("Create", "Card")">Create card</a></li>
-                <li><a href="@Url.Action("List", "Card")">List of cards</a></li>
-                <li><a href="@Url.Action("Index", "Drill")">Training</a></li>
-            </ul>
-        </div>
         @RenderBody()
     </body>
 </html>

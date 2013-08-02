@@ -18,6 +18,11 @@ namespace SuperMemo.BL
 
         public void Save(string word, string translation)
         {
+            if (string.IsNullOrEmpty(word) || string.IsNullOrEmpty(translation))
+            {
+                return;
+            }
+
             var card = GetCardByContent(word);
             if (card == null)
             {
@@ -54,7 +59,7 @@ namespace SuperMemo.BL
 
         public void Delete(string word)
         {
-             var card = GetCardByContent(word);
+            var card = GetCardByContent(word);
             if (card != null)
             {
                 cardRepo.Delete(card);

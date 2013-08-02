@@ -1,5 +1,10 @@
 ﻿@model SuperMemo.Models.LoginInfoModel
 
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_NonLoggedLayout.cshtml";
+}
+
 @if (Model != null && Model.ErrorMessage != null)
 {
     <p>
