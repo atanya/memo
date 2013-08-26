@@ -1,63 +1,88 @@
-﻿$(function () {
-    var saveCup = function () {
-        showMessage("");
+﻿superMemo.Card = {
+    saveCup: function() {
+        superMemo.Card.showMessage("");
         var word = $("#wordInput").val();
         var translaton = $("#translationInput").val();
-        if (!checkValidation(word, translaton)) {
+        if (!superMemo.Card.checkValidation(word, translaton)) {
             return;
         }
         superMemo.proxy.saveCup(word, translaton, function(result) {
-            showErrorMessage("Card saved");
+            superMemo.Card.showErrorMessage("Card saved");
             $("#wordInput").val("");
             $("#translationInput").val("");
         }, function(result) {
             alert("failure");
         });
-    };
+    },
 
-    var checkValidation = function (word, translation) {
-        showMessage("#wordValidation", "");
-        showMessage("#translationValidation", "");
+    checkValidation: function(word, translation) {
+        superMemo.Card.showMessage("#wordValidation", "");
+        superMemo.Card.showMessage("#translationValidation", "");
         if (!word) {
-            showMessage("#wordValidation", "Required");
+            superMemo.Card.showMessage("#wordValidation", "Required");
         }
         if (!translation) {
-            showMessage("#translationValidation", "Required");
+            superMemo.Card.showMessage("#translationValidation", "Required");
         }
         return !!word && !!translation;
-    };
+    },
 
-    var showErrorMessage = function(message) {
-        showMessage("#messageLabel", message);
-    };
+    showErrorMessage: function(message) {
+        superMemo.Card.showMessage("#messageLabel", message);
+    },
 
-    var showMessage = function(control, message) {
+    showMessage: function(control, message) {
         $(control).text(message);
-    };
+    },
 
-    var viewModel = {
-        removeCup: function (func, event) {
+    viewModel: {
+        cards: [],
+        
+        getCardID: function(targetElementInRow) {
+            return $(targetElementInRow).closest("tr").attr("data_id");
+        },
+
+        removeCup: function(func, event) {
             if (confirm("Are you sure?")) {
-                var word = $(event.currentTarget).closest("tr").find("td:first-child").text();
-                superMemo.proxy.removeCup(word, function(result) {
+                var id = superMemo.Card.viewModel.getCardID(event.currentTarget);
+                superMemo.proxy.removeCup(id, function(result) {
                     location.reload();
                 }, function(result) {
                     alert("failure");
                 });
             }
         },
-        
+
         updateCup: function(func, event) {
-            var word = $(event.currentTarget).closest("tr").find("td:first-child").text();
-            window.location = "Edit" + "?word=" + word;
+            var id = superMemo.Card.viewModel.getCardID(event.currentTarget);
+            window.location = "Edit" + "?id=" + id;
         },
-        
+
         addCup: function() {
             window.location = "Create";
         }
-    };
-    ko.applyBindings(viewModel, document.getElementById('cardList'));
+    },
 
-    $("#saveButton").click(saveCup);
-    $("#saveButton").click(saveCup);
-})
+    onLoadSuccessCallback: function(response) {
+        superMemo.Card.viewModel.cards = response;
+        ko.applyBindings(superMemo.Card.viewModel, document.getElementById('cardList'));
+    },
+
+    onLoadCardSuccessCallback: function (response) {
+        $("#wordInput").val(response.word);
+        $("#translationInput").val(response.translation);
+    },
+
+    onLoadFailureCallback: function(response) {
+        alert("Fail");
+    },
+
+    load: function() {
+        superMemo.proxy.loadList(superMemo.Card.onLoadSuccessCallback, superMemo.Card.onLoadFailureCallback);
+    },
+
+    loadCard: function (id) {
+        superMemo.proxy.loadCard(id, superMemo.Card.onLoadCardSuccessCallback, superMemo.Card.onLoadFailureCallback);
+    }
+};
+superMemo.Card.init();

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using SuperMemo.DomainModel;
@@ -57,9 +58,10 @@ namespace SuperMemo.BL
             return cardRepo.Count();
         }
 
-        public void Delete(string word)
+        public void Delete(string id)
         {
-            var card = GetCardByContent(word);
+            //var card = GetCardByContent(id);
+            var card = cardRepo.GetById(id);
             if (card != null)
             {
                 cardRepo.Delete(card);
@@ -70,5 +72,16 @@ namespace SuperMemo.BL
         {
             return cardRepo.GetSingle(c => c.Word == word);
         }
+
+        public Card GetCardByID(string id)
+        {
+            var card = cardRepo.GetById(id);
+            if (card == null)
+            {
+                throw new Exception("Card is absent");
+            }
+            return card;
+        }
+
     }
 }

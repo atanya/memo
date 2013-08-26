@@ -72,7 +72,7 @@ namespace SuperMemo.SM2.Implementation
             card.EFactor = 2.5;
             card.NumberOfRepetitions = 0;
             card.LastInterval = 0;
-            card.NextDate = DateTime.UtcNow.Date.AddDays(1);
+            card.NextDate = DateTime.UtcNow.Date;
             return card;
         }
 

@@ -1,5 +1,6 @@
 ﻿$(function () {
     var viewModel = {
+        wordID: ko.observable(),
         currentWord: ko.observable(),
         currentTrans: ko.observable(),
         totalWords: ko.observable(),
@@ -21,8 +22,13 @@
         $("#answerLink").click(true, showAnswer);
     };
 
-    var sendAnswer = function(event) {
-        getNextWord(event.data);
+    var sendAnswer = function (event) {
+        var wordId = viewModel.wordID();
+        superMemo.proxy.sendAnswer(wordId, event.data, function(result) {
+            getNextWord();
+        }, function(result) {
+            alert("failure");
+        });
     };
 
     var showAnswer = function(show) {
@@ -35,8 +41,9 @@
         }
     };
 
-    var getNextWord = function(answer) {
-        superMemo.proxy.getNextWord(answer, function (result) {
+    var getNextWord = function () {
+        showAnswer(false);
+        superMemo.proxy.getNextWord(function (result) {
             bindData(result);
         }, function (result) {
             alert("failure");
@@ -44,10 +51,11 @@
     };
 
     var bindData = function (model) {
-        viewModel.currentWord(model.Word);
-        viewModel.currentTrans(model.Translation);
-        viewModel.totalWords(model.TotalWords);
-        viewModel.numberToRepeat(model.LeftWords);
+        viewModel.wordID(model.id);
+        viewModel.currentWord(model.word);
+        viewModel.currentTrans(model.translation);
+        viewModel.totalWords(model.total);
+        viewModel.numberToRepeat(model.wordsForToday);
     };
     
 

@@ -126,6 +126,7 @@
     <Compile Include="Controllers\DrillController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MainController.cs" />
+    <Compile Include="Controllers\TrainingController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -200,6 +201,10 @@
     <ProjectReference Include="..\DomainModel\DomainModel.csproj">
       <Project>{ae99d246-863d-42f2-9743-fa651ee5ab54}</Project>
       <Name>DomainModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DTO\DTO.csproj">
+      <Project>{B4DACC3C-E005-462A-8BF0-4AE52E1BC7F8}</Project>
+      <Name>DTO</Name>
     </ProjectReference>
     <ProjectReference Include="..\SuperMemo.BL\SuperMemo.BL.csproj">
       <Project>{C51901A8-4534-4F1C-BA88-897387BDC2FF}</Project>

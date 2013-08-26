@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using System.Collections.Generic;
 using System.Web.Http;
+using DTO;
 using SuperMemo.BL;
+using SuperMemo.DomainModel;
 
 namespace SuperMemo.Controllers
 {
@@ -14,30 +12,40 @@ namespace SuperMemo.Controllers
     }
     public class MainController : ApiController
     {
-        // GET api/<controller>
-        public IEnumerable<string> Get()
+        // GET api/<controller> - return list of cards
+        public List<CardDto> Get()
         {
-            ITranslator t = new Translator();
-
-            return new string[] { "hello", "value2" };
+            var cardService = new CardService();
+            var list = cardService.List();
+            List<CardDto> result = list.ConvertAll(c => new CardDto(c));
+            return result;
         }
 
-        // GET api/<controller>/5
-        public ResponseObject Get(string id)
+        // GET api/<controller>/5 - return card by id
+        public CardDto Get(string id)
         {
-            ITranslator t = new Translator();
-            return new ResponseObject {Data = t.Translate(id)};
+            var card = new CardService().GetCardByID(id);
+            return new CardDto(card);
         }
 
-        // POST api/<controller>
-        public void Post([FromBody]string word, [FromBody]string translation)
+        // POST api/<controller> - update card
+        public long Post([FromBody]Card card)
         {
-            new CardService().Save(word, translation);
+            new CardService().Save(card.Word, card.Translation);
+            return 0;
         }
 
-        // DELETE api/<controller>/5
+        //PUT - update card
+        public long Put(string id, [FromBody]Card card)
+        {
+            new CardService().Save(card.Word, card.Translation);
+            return 0;
+        }
+
+        // DELETE api/<controller>/5 - delete card
         public void Delete(string id)
         {
+            new CardService().Delete(id);
         }
     }
 }

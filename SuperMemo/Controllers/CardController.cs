@@ -15,43 +15,18 @@ namespace SuperMemo.Controllers
         }
 
         [HttpGet]
-        public ActionResult Edit(string word)
+        public ActionResult Edit(string id)
         {
-            //ITranslator t = new Translator();
-            //var translation = t.Translate(word);
-            var cardService = new CardService();
-            var card = cardService.GetCardByContent(word);
-            if (card == null)
-            {
-                return RedirectToAction("Create");
-            }
-            var viewModel = new CardViewModel {Word = word, Translation = card.Translation};
-            return View("EditCard", viewModel);
-        }
-
-        [HttpPost]
-        public ActionResult Save(CardViewModel card)
-        {
-            var cardService = new CardService();
-            cardService.Save(card.Word, card.Translation);
-            return Json("success");
+            return View("EditCard", new CardViewModel{ID = id});
         }
 
         [HttpGet]
         public ActionResult List()
         {
-            var cardService = new CardService();
-            var list = cardService.List();
-            var model = new CardListViewModel {Cards = list ?? new List<Card>()};
+            var model = new CardListViewModel { Cards = new List<Card>() };
             return View("List", model);
         }
 
-        [HttpPost]
-        public ActionResult Delete(string word)
-        {
-            var cardService = new CardService();
-            cardService.Delete(word);
-            return Json("success");
-        }
+
     }
 }

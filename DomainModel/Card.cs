@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Runtime.Serialization;
+using MongoDB.Bson;
 using MongoRepository;
 
 namespace SuperMemo.DomainModel
@@ -14,30 +16,6 @@ namespace SuperMemo.DomainModel
 
     public class Card : Entity
     {
-        protected bool Equals(Card other)
-        {
-            return string.Equals(Word, other.Word) && string.Equals(Translation, other.Translation) &&
-                   LastTrainingDate.Equals(other.LastTrainingDate) && Score == other.Score &&
-                   NextDate.Equals(other.NextDate) && EFactor.Equals(other.EFactor) &&
-                   LastInterval == other.LastInterval && NumberOfRepetitions == other.NumberOfRepetitions;
-        }
-
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                int hashCode = (Word != null ? Word.GetHashCode() : 0);
-                hashCode = (hashCode*397) ^ (Translation != null ? Translation.GetHashCode() : 0);
-                hashCode = (hashCode*397) ^ LastTrainingDate.GetHashCode();
-                hashCode = (hashCode*397) ^ (int) Score;
-                hashCode = (hashCode*397) ^ NextDate.GetHashCode();
-                hashCode = (hashCode*397) ^ EFactor.GetHashCode();
-                hashCode = (hashCode*397) ^ LastInterval;
-                hashCode = (hashCode*397) ^ NumberOfRepetitions;
-                return hashCode;
-            }
-        }
-
         public string Word { get; set; }
         public string Translation { get; set; }
         public DateTime? LastTrainingDate { get; set; }
@@ -55,6 +33,28 @@ namespace SuperMemo.DomainModel
             return Equals((Card) obj);
         }
 
+        protected bool Equals(Card other)
+        {
+            return string.Equals(Word, other.Word) && string.Equals(Translation, other.Translation) &&
+                   LastTrainingDate.Equals(other.LastTrainingDate) && Score == other.Score &&
+                   NextDate.Equals(other.NextDate) && EFactor.Equals(other.EFactor) &&
+                   LastInterval == other.LastInterval && NumberOfRepetitions == other.NumberOfRepetitions;
+        }
 
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                int hashCode = (Word != null ? Word.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (Translation != null ? Translation.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ LastTrainingDate.GetHashCode();
+                hashCode = (hashCode * 397) ^ (int)Score;
+                hashCode = (hashCode * 397) ^ NextDate.GetHashCode();
+                hashCode = (hashCode * 397) ^ EFactor.GetHashCode();
+                hashCode = (hashCode * 397) ^ LastInterval;
+                hashCode = (hashCode * 397) ^ NumberOfRepetitions;
+                return hashCode;
+            }
+        }
     }
 }

@@ -19,9 +19,9 @@ namespace SuperMemo.App_Start
                 ContractResolver = new CamelCasePropertyNamesContractResolver()
             };
 
-            // Insert the JSONP formatter in front of the standard JSON formatter.
-            var jsonpFormatter = new JsonpMediaTypeFormatter(formatters.JsonFormatter);
-            formatters.Insert(0, jsonpFormatter);
+            //// Insert the JSONP formatter in front of the standard JSON formatter.
+            //var jsonpFormatter = new JsonpMediaTypeFormatter(formatters.JsonFormatter);
+            //formatters.Insert(0, jsonpFormatter);
         }
     }
 }
