@@ -10,6 +10,7 @@ using SuperMemo.SM2.Implementation;
 
 namespace SuperMemo.Controllers
 {
+    [Authorize]
     public class DrillController : Controller
     {
         private const string CurrentCardKey = "CurrentCard";

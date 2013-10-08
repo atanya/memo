@@ -7,6 +7,7 @@ using SuperMemo.BL;
 
 namespace SuperMemo.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
         //

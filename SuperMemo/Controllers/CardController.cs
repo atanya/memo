@@ -6,6 +6,7 @@ using SuperMemo.Models;
 
 namespace SuperMemo.Controllers
 {
+    [Authorize]
     public class CardController : Controller
     {
         [HttpGet]

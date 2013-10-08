@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Formatting;
+using System.Security.Principal;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
+using System.Web.Security;
 using SuperMemo.App_Start;
 using WebApiContrib.Formatting.Jsonp;
 
@@ -23,6 +25,7 @@ namespace SuperMemo
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             FormatterConfig.RegisterFormatters(GlobalConfiguration.Configuration.Formatters);
+            GlobalConfiguration.Configuration.Filters.Add(new System.Web.Http.AuthorizeAttribute());
         }
     }
 }

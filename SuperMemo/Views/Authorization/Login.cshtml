@@ -12,7 +12,7 @@
     </p>
 }
 
-@using (Html.BeginForm())
+@using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
 {
     <p><span>Имя:</span></p>
     <p>

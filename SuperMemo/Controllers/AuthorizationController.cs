@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using SuperMemo.ActionFilters;
 using SuperMemo.BL;
 using SuperMemo.DomainModel;
@@ -18,34 +19,52 @@ namespace SuperMemo.Controllers
             _userService = new UserService();
         }
 
-        public ActionResult Login()
+        [AllowAnonymous]
+        public ActionResult Login(string returnUrl)
         {
+            ViewBag.ReturnUrl = returnUrl;
             return View();
         }
 
         [HttpPost]
-        public ActionResult Login(LoginInfoModel loginInfo)
+        [AllowAnonymous]
+        public ActionResult Login(LoginInfoModel loginInfo, string returnUrl)
         {
-            if (ModelState.IsValid)
+            var isAuth = Authorize(loginInfo);
+            if (isAuth)
             {
-                var user = _userService.FindByNameAndPassword(loginInfo.UserName, loginInfo.Password);
-                if (user != null)
+                FormsAuthentication.SetAuthCookie(loginInfo.UserName, false);
+                if (Url.IsLocalUrl(returnUrl))
                 {
-                    SetCookie(user);
-                    return RedirectToAction("Index", "Home");
+                    return Redirect(returnUrl);
                 }
+                else
+                {
+                    return RedirectToAction("List", "Card");
+                }
+            }
+            else
+            {
                 loginInfo.ErrorMessage = "Нет пользователя с таким именем/паролем.";
                 return View(loginInfo);
             }
-            return View(loginInfo);
+            return Json("");
         }
 
+        private bool Authorize(LoginInfoModel loginInfo)
+        {
+            var user = _userService.FindByNameAndPassword(loginInfo.UserName, loginInfo.Password);
+            return user != null;
+        }
+
+        [AllowAnonymous]
         public ActionResult Register()
         {
             return View();
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public ActionResult Register(LoginInfoModel loginInfo)
         {
             if (ModelState.IsValid)
@@ -58,37 +77,20 @@ namespace SuperMemo.Controllers
                 }
                 _userService.Create(loginInfo.UserName, loginInfo.Password);
                 user = _userService.FindByNameAndPassword(loginInfo.UserName, loginInfo.Password);
-                SetCookie(user);
+                FormsAuthentication.SetAuthCookie(user.Name, false);
                 return RedirectToAction("Index", "Home");
             }
             return View(loginInfo);
         }
 
-        [AuthorizationFilter]
+        [AllowAnonymous]
         public ActionResult Logout()
         {
-            Response.Cookies.Set(new HttpCookie("SuperMemoSession") {Expires = DateTime.Now.AddDays(-1)});
+            FormsAuthentication.SignOut();
+            Session.Abandon();
+
             return RedirectToAction("Login");
         }
 
-        private void SetCookie(User user)
-        {
-            if (Response.Cookies.AllKeys.Contains("SuperMemoSession"))
-            {
-                Response.Cookies.Set(CreateCookie(user));
-            }
-            else
-            {
-                Response.Cookies.Add(CreateCookie(user));
-            }
-        }
-
-        private static HttpCookie CreateCookie(User user)
-        {
-            return new HttpCookie("SuperMemoSession", user.PasswordHash)
-                {
-                    Expires = DateTime.Now.AddDays(7)
-                };
-        }
     }
 }
