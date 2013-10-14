@@ -17,69 +17,81 @@ namespace SuperMemo.BL
             cardRepo = new MongoRepository<Card>();
         }
 
-        public void Save(string word, string translation)
+        public string Save(string id, string word, string translation, User owner)
         {
-            if (string.IsNullOrEmpty(word) || string.IsNullOrEmpty(translation))
+            if (string.IsNullOrEmpty(word) || string.IsNullOrEmpty(translation) || owner == null)
             {
-                return;
+                throw new ArgumentException("Word, translation or user is null");
             }
 
-            var card = GetCardByContent(word);
-            if (card == null)
+            if (string.IsNullOrEmpty(id))
             {
-                Create(word, translation);
+                return Create(word, translation, owner);
             }
             else
             {
-                Update(card, translation);
+                var card = GetCardByID(id);
+                if (card != null && card.Owner.Id == owner.Id)
+                {
+                    return Update(card, word, translation);
+                }
+                else
+                {
+                    return Create(word, translation, owner);
+                }
             }
         }
 
-        private void Create(string word, string translation)
+        private string Create(string word, string translation, User owner)
         {
-            var card = new Card {Word = word, Translation = translation};
+            var card = new Card {Word = word, Translation = translation, Owner = owner};
             card = Algorithm.InitCard(card);
-            cardRepo.Add(card);
+            card = cardRepo.Add(card);
+            return card.Id;
         }
 
-        private void Update(Card card, string translation)
+        private string Update(Card card, string word,  string translation)
         {
+            card.Word = word;
             card.Translation = translation;
             cardRepo.Update(card);
+            return card.Id;
         }
 
-        public List<Card> List()
+        public List<Card> List(string ownerID)
+        {
+            return cardRepo.All(c => c.Owner.Id == ownerID).ToList();
+        }
+        
+        //Restrict for admins
+        public List<Card> ListAll()
         {
             return cardRepo.All().ToList();
         }
 
-        public long Count()
+        public long Count(string ownerID)
         {
-            return cardRepo.Count();
+            return cardRepo.All(c => c.Owner.Id == ownerID).Count();
         }
 
-        public void Delete(string id)
+        public void Delete(string id, string ownerID)
         {
             //var card = GetCardByContent(id);
             var card = cardRepo.GetById(id);
-            if (card != null)
+            if (card != null && card.Owner.Id == ownerID)
             {
                 cardRepo.Delete(card);
             }
         }
 
-        public Card GetCardByContent(string word)
+        public Card GetCardByContent(string word, string ownerID)
         {
-            return cardRepo.GetSingle(c => c.Word == word);
+            return cardRepo.GetSingle(c => c.Word == word && c.Owner.Id == ownerID);
         }
 
         public Card GetCardByID(string id)
         {
             var card = cardRepo.GetById(id);
-            if (card == null)
-            {
-                throw new Exception("Card is absent");
-            }
             return card;
         }
 

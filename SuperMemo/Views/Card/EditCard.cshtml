@@ -8,6 +8,7 @@
 
 <h2>@(string.IsNullOrEmpty(Model.ID)?"Create":"Update") Card</h2>
 <div id="cardContentWrapper">
+    <input type="hidden" value="@Model.ID" id="WordID"/>
     <div id="wordDiv">
         <label>Word: </label>
         <input type="text" id="wordInput" /><span id="wordValidation" style="color: red;"></span>

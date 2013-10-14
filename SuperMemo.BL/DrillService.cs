@@ -15,15 +15,18 @@ namespace SuperMemo.BL
             cardRepo = new MongoRepository<Card>();
         }
 
-        public List<Card> GetCardsForDrill()
+        public List<Card> GetCardsForDrill(string ownerID)
         {
             var dateTime = DateTime.UtcNow.Date.AddDays(1);
-            return cardRepo.All().Where(card => card.NextDate < dateTime).ToList();
+            return cardRepo.All().Where(card => card.NextDate < dateTime && card.Owner.Id == ownerID).ToList();
         }
 
-        public void UpdateCard(Card card)
+        public void UpdateCard(Card card, string ownerID)
         {
-            cardRepo.Update(card);
+            if (card.Owner.Id == ownerID)
+            {
+                cardRepo.Update(card);
+            }
         }
     }
 }

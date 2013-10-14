@@ -3,10 +3,11 @@
         superMemo.Card.showMessage("");
         var word = $("#wordInput").val();
         var translaton = $("#translationInput").val();
+        var id = $("#WordID").val();
         if (!superMemo.Card.checkValidation(word, translaton)) {
             return;
         }
-        superMemo.proxy.saveCup(word, translaton, function(result) {
+        superMemo.proxy.saveCup(id, word, translaton, function(result) {
             superMemo.Card.showErrorMessage("Card saved");
             $("#wordInput").val("");
             $("#translationInput").val("");
@@ -55,12 +56,12 @@
 
         updateCup: function(func, event) {
             var id = superMemo.Card.viewModel.getCardID(event.currentTarget);
-            window.location = "Edit" + "?id=" + id;
-        },
+            window.location = "Card/Edit/" + id;
+        }/*,
 
         addCup: function() {
             window.location = "Create";
-        }
+        }*/
     },
 
     onLoadSuccessCallback: function(response) {
@@ -85,4 +86,4 @@
         superMemo.proxy.loadCard(id, superMemo.Card.onLoadCardSuccessCallback, superMemo.Card.onLoadFailureCallback);
     }
 };
-superMemo.Card.init();
+superMemo.Card.load();

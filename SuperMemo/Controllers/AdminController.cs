@@ -16,8 +16,8 @@ namespace SuperMemo.Controllers
         public ActionResult Index()
         {
             var cardService = new CardService();
-
-            return View("Dump", cardService.List());
+            var listAll = cardService.ListAll();
+            return View("Dump", listAll);
         }
 
     }

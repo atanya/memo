@@ -29,6 +29,7 @@
                 <th>LastTrainingDate</th>
                 <th>NumberOfRepetitions</th>
                 <th>NextDate</th>
+                <th>Owner</th>
             </tr>
             @foreach (var card in Model)
             {
@@ -41,6 +42,9 @@
                     <td>@card.LastTrainingDate</td>
                     <td>@card.NumberOfRepetitions</td>
                     <td>@card.NextDate</td>
+                    <td>
+                        @Html.Raw(card.Owner != null ? card.Owner.Name : "Test")
+                    </td>
                 </tr>
             }
         </table>

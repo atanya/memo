@@ -11,8 +11,9 @@
             error: onFailureCallback
         });
     },
-    saveCup: function (word, translation, onSuccessCallback, onFailureCallback) {
+    saveCup: function (id, word, translation, onSuccessCallback, onFailureCallback) {
         var data = {
+            Id: id,
             Word: word,
             Translation: translation
         };

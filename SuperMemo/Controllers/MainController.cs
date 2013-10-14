@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Web.Http;
 using DTO;
 using SuperMemo.BL;
-using SuperMemo.DomainModel;
 
 namespace SuperMemo.Controllers
 {
@@ -10,13 +10,16 @@ namespace SuperMemo.Controllers
     {
         public string Data { get; set; }
     }
+
+    [Authorize]
     public class MainController : ApiController
     {
         // GET api/<controller> - return list of cards
         public List<CardDto> Get()
         {
+            var currentUser = new UserService().FindByName(User.Identity.Name);
             var cardService = new CardService();
-            var list = cardService.List();
+            var list = cardService.List(currentUser.Id);
             List<CardDto> result = list.ConvertAll(c => new CardDto(c));
             return result;
         }
@@ -29,23 +32,30 @@ namespace SuperMemo.Controllers
         }
 
         // POST api/<controller> - update card
-        public long Post([FromBody]Card card)
+        public string Post([FromBody]CardDto card)
         {
-            new CardService().Save(card.Word, card.Translation);
-            return 0;
+            if (card == null)
+                throw new ArgumentException("Wrong parameter");
+            var currentUser = new UserService().FindByName(User.Identity.Name);
+            var id = new CardService().Save(card.ID, card.Word, card.Translation, currentUser);
+            return id;
         }
 
         //PUT - update card
-        public long Put(string id, [FromBody]Card card)
+        public long Put(string id, [FromBody]CardDto card)
         {
-            new CardService().Save(card.Word, card.Translation);
+            var currentUser = new UserService().FindByName(User.Identity.Name);
+            new CardService().Save(card.ID, card.Word, card.Translation, currentUser);
             return 0;
         }
 
         // DELETE api/<controller>/5 - delete card
         public void Delete(string id)
         {
-            new CardService().Delete(id);
+            var currentUser = new UserService().FindByName(User.Identity.Name);
+            new CardService().Delete(id, currentUser.Id);
         }
     }
+
+    
 }

@@ -20,12 +20,7 @@
         </tbody>
     </table>
 
-    <input type="button" value="Add new card"  data-bind="click: addCup"/>
+    @*<input type="button" value="Add new card"  data-bind="click: addCup"/>*@
+    @Html.ActionLink("Add new card", "Create", "Card")
     
 </div>
-
-<script>
-    $(function() {
-        superMemo.Card.load();
-    });
-</script>
