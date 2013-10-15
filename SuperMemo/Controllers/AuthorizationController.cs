@@ -40,7 +40,7 @@ namespace SuperMemo.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("List", "Card");
+                    return RedirectToDefaultAction();
                 }
             }
             else
@@ -49,6 +49,11 @@ namespace SuperMemo.Controllers
                 return View(loginInfo);
             }
             return Json("");
+        }
+
+        private RedirectToRouteResult RedirectToDefaultAction()
+        {
+            return RedirectToAction("List", "Card");
         }
 
         private bool Authorize(LoginInfoModel loginInfo)
@@ -78,7 +83,7 @@ namespace SuperMemo.Controllers
                 _userService.Create(loginInfo.UserName, loginInfo.Password);
                 user = _userService.FindByNameAndPassword(loginInfo.UserName, loginInfo.Password);
                 FormsAuthentication.SetAuthCookie(user.Name, false);
-                return RedirectToAction("Index", "Home");
+                return RedirectToDefaultAction();
             }
             return View(loginInfo);
         }

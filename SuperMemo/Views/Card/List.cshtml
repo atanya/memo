@@ -11,7 +11,7 @@
     <table id="cardTable">
         <tbody data-bind="foreach: cards">
             <tr data-bind="attr: { data_id: id}">
-                <td data-bind="text: id"></td>
+                <td data-bind="text: id" style="display: none"></td><!--Only for development. To delete later-->
                 <td data-bind="text: word"></td>
                 <td data-bind="text: translation"></td>
                 <td><input type="button" value="Update" data-bind="click: $parent.updateCup" /></td>

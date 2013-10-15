@@ -9,6 +9,6 @@ namespace SuperMemo.DomainModel
 
         public string PasswordHash { get; set; }
 
-        public IList<Card> Cards { get; set; }
+        //public IList<Card> Cards { get; set; }
     }
 }

@@ -1,4 +1,38 @@
 ﻿superMemo.Card = {
+    
+    initEditForm: function() {
+        $('#wordInput').keypress(function(e) {
+            if (e.which == 13) {
+                if (!$("#translationInput").val()) {
+                    $('#translationInput').focus();
+                } else {
+                    superMemo.Card.saveCup();
+                }
+            }
+        });
+
+        $('#translationInput').keypress(function(e) {
+            if (e.which == 13) {
+                superMemo.Card.saveCup();
+            }
+        });
+
+        $("#saveButton").click(superMemo.Card.saveCup);
+
+        $("#translationInput").autocomplete({
+            source: function (request, response) {
+                var res = "";
+                var rus = "йцукенгшщзхъфывапролджэячсмитьбюЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ";
+                var eng = "qwertyuiop[]asdfghjkl;'zxcvbnm,.QWERTYUIOP{}ASDFGHJKL:\"ZXCVBNM<>";
+                for (var i = 0; i < request.term.length; i++) {
+                    var pos = eng.indexOf(request.term[i]);
+                    res += pos === -1 ? request.term[i] : rus[pos];
+                }
+                response([res]);
+            }
+        });
+    },
+    
     saveCup: function() {
         superMemo.Card.showMessage("");
         var word = $("#wordInput").val();
@@ -72,6 +106,7 @@
     onLoadCardSuccessCallback: function (response) {
         $("#wordInput").val(response.word);
         $("#translationInput").val(response.translation);
+        $("#wordInput").focus();
     },
 
     onLoadFailureCallback: function(response) {
