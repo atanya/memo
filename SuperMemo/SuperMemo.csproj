@@ -146,6 +146,7 @@
     <None Include="Scripts\jquery-1.4.4-vsdoc.js" />
     <Content Include="Scripts\card.js" />
     <Content Include="Scripts\drill.js" />
+    <Content Include="Scripts\EditCard.js" />
     <Content Include="Scripts\jquery-1.4.4.js" />
     <Content Include="Scripts\jquery-1.4.4.min.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
@@ -172,6 +173,7 @@
     <Content Include="Scripts\JQueryUI\css\redmond\jquery-ui-1.10.3.custom.min.css" />
     <Content Include="Scripts\JQueryUI\js\jquery-ui-1.10.3.custom.min.js" />
     <Content Include="Scripts\knockout-2.2.1.js" />
+    <Content Include="Scripts\knockout.mapping-latest.js" />
     <Content Include="Scripts\namespace.js" />
     <Content Include="Scripts\proxy.js" />
     <Content Include="Skins\Images\glyphicons-halflings-white.png" />
