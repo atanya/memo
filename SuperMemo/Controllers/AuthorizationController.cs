@@ -53,7 +53,7 @@ namespace SuperMemo.Controllers
 
         private RedirectToRouteResult RedirectToDefaultAction()
         {
-            return RedirectToAction("List", "Card");
+            return RedirectToAction("Index", "Drill");
         }
 
         private bool Authorize(LoginInfoModel loginInfo)

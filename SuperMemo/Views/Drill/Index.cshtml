@@ -4,9 +4,10 @@
 }
 <script type="text/javascript" src="@Url.Content("~/Scripts/drill.js")"></script>
 
+<input type="hidden" value="navTraining" id="navID"/>
 <div id="drillPage">
-    <div id="mainWrapper" style="margin-top: 20px;" data-bind="visible: numberToRepeat">
-        <div>You need to repeat <span id="numberToRepeat" data-bind="text: numberToRepeat"></span> cards of <span id="totalCards" data-bind="text: totalWords"></span></div><br/>
+    <div id="mainWrapper" style="margin-top: 20px;text-align: center" data-bind="visible: numberToRepeat">
+        <div style="float: right;font-weight: bold;"><span id="numberToRepeat" style="color: green;" data-bind="text: numberToRepeat"></span> (<span style="color: blue;" id="totalCards" data-bind="text: totalWords"></span>)</div><br/>
         <div>
             <span id="wordPlace" data-bind="text: currentWord"></span>
         </div>
@@ -15,11 +16,12 @@
             <a href="#" id="answerLink">Show answer</a>
             <span id="transPlace" data-bind="text: currentTrans" style="display: none;"></span>
         </div>
-        <br />
-        <button id="againBtn">Again</button>
-        <button id="badBtn">Bad</button>
-        <button id="goodBtn">Good</button>
-        <button id="perfectBtn">Excellent</button>
+        <div style="margin-top: 30px;">
+            <button id="againBtn" class="btn btn-danger">Again</button>
+            <button id="badBtn" class="btn btn-info">Hard</button>
+            <button id="goodBtn" class="btn btn-info">Medium</button>
+            <button id="perfectBtn" class="btn btn-success">Easy</button>
+        </div>
     </div>
     <div id="drillEndWrapper" data-bind="visible: numberToRepeat() == 0">
         <h2>Congratulations!</h2>

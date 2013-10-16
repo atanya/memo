@@ -19,7 +19,7 @@
 
         updateCup: function(func, event) {
             var id = superMemo.Card.viewModel.getCardID(event.currentTarget);
-            window.location = "Card/Edit/" + id;
+            window.location = superMemo.urls.editCard + "/" + id;
         }
     },
 

@@ -142,15 +142,17 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Content Include="Global.asax" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
-    <None Include="Scripts\jquery-1.4.4-vsdoc.js" />
+    <Content Include="Scripts\bootstrap\css\bootstrap-theme.min.css" />
+    <Content Include="Scripts\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Scripts\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Scripts\bootstrap\js\bootstrap.min.js" />
     <Content Include="Scripts\card.js" />
     <Content Include="Scripts\drill.js" />
     <Content Include="Scripts\EditCard.js" />
-    <Content Include="Scripts\jquery-1.4.4.js" />
-    <Content Include="Scripts\jquery-1.4.4.min.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Scripts\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Scripts\bootstrap\fonts\glyphicons-halflings-regular.woff" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -179,10 +181,6 @@
     <Content Include="Scripts\proxy.js" />
     <Content Include="Skins\Images\glyphicons-halflings-white.png" />
     <Content Include="Skins\Images\glyphicons-halflings.png" />
-    <Content Include="Skins\Styles\bootstrap-responsive.css" />
-    <Content Include="Skins\Styles\bootstrap-responsive.min.css" />
-    <Content Include="Skins\Styles\bootstrap.css" />
-    <Content Include="Skins\Styles\bootstrap.min.css" />
     <Content Include="Skins\Styles\styles.css">
       <DependentUpon>styles.scss</DependentUpon>
     </Content>

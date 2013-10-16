@@ -6,6 +6,7 @@
 }
 <script type="text/javascript" src="@Url.Content("~/Scripts/EditCard.js")"></script>
 
+<input type="hidden" value="navAdd" id="navID"/>
 <h2>@(string.IsNullOrEmpty(Model.ID)?"Create":"Update") Card</h2>
 <div id="cardContentWrapper">
     <input type="hidden" value="@Model.ID" id="WordID"/>
