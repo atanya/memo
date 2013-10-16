@@ -47,5 +47,9 @@
 
     loadCard: function (id, onSuccessCallback, onFailureCallback) {
         this.sendAjaxRequest('/SuperMemo/api/main/' + id, 'GET', null, onSuccessCallback, onFailureCallback);
-    }
+    },
+    
+    getTranslation: function (word, onSuccessCallback, onFailureCallback) {
+        this.sendAjaxRequest('/SuperMemo/api/translator/' + word, 'GET', null, onSuccessCallback, onFailureCallback);
+    },
 };

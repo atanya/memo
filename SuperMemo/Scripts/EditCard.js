@@ -5,23 +5,39 @@
     initEditForm: function () {
         $("#translationInput").autocomplete({
             source: function (request, response) {
-                var res = "";
-                var rus = "йцукенгшщзхъфывапролджэячсмитьбюЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ.,";
-                var eng = "qwertyuiop[]asdfghjkl;'zxcvbnm,.QWERTYUIOP{}ASDFGHJKL:\"ZXCVBNM<>/?";
-                for (var i = 0; i < request.term.length; i++) {
-                    var pos = eng.indexOf(request.term[i]);
-                    res += pos === -1 ? request.term[i] : rus[pos];
+                var self = superMemo.EditCard;
+                var translitted = self.translitString(request.term);
+                if (self.viewModel.word()) {
+                    superMemo.proxy.getTranslation(self.viewModel.word(), function(result) { self.processAutocomplete(result, response, translitted); }, function(result) { alert(result); });
+                } else {
+                    response([translitted]);
                 }
-                response([res]);
             },
+            minLength: 0,
             select: function (event, ui) {
                 $(this).val(ui.item.value).change();
             }
         });
     },
     
+    translitString: function(str) {
+        var result = "";
+        var rus = "йцукенгшщзхъфывапролджэячсмитьбюЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ.,";
+        var eng = "qwertyuiop[]asdfghjkl;'zxcvbnm,.QWERTYUIOP{}ASDFGHJKL:\"ZXCVBNM<>/?";
+        for (var i = 0; i < str.length; i++) {
+            var pos = eng.indexOf(str[i]);
+            result += pos === -1 ? str[i] : rus[pos];
+        }
+        return result;
+    },
+    
+    processAutocomplete: function(data, callback, translit) {
+        data.splice(0, 0, translit);
+        callback(data);
+    },
+    
     wordKeyPress: function(vm, e) {
-        if (e.which == 13) {
+        if (e.which == 13) { //on Enter
             if (!vm.translation()) {
                 $('#translationInput').focus();
             } else {
@@ -32,7 +48,7 @@
     },
 
     translationKeyPress: function (vm, e) {
-        if (e.which == 13) {
+        if (e.which == 13) { //on Enter
             superMemo.EditCard.saveCup();
         }
         return true;

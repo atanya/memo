@@ -11,11 +11,11 @@
     <input type="hidden" value="@Model.ID" id="WordID"/>
     <div id="wordDiv">
         <label>Word: </label>
-        <input type="text" id="wordInput" data-bind="value: word, event: { keypress: wordKeyPress }" /><span id="wordValidation" style="color: red;"></span>
+        <input type="text" id="wordInput" data-bind="value: word, event: { keypress: wordKeyPress }" maxlength="100" /><span id="wordValidation" style="color: red;"></span>
     </div>
     <div id="translationDiv">
         <label>Translation: </label>
-        <input type="text" id="translationInput" data-bind="value: translation, event: { keypress: superMemo.EditCard.translationKeyPress }" /><span id="translationValidation" style="color: red;"></span>
+        <input type="text" id="translationInput" data-bind="value: translation, event: { keypress: superMemo.EditCard.translationKeyPress }" maxlength="100" /><span id="translationValidation" style="color: red;"></span>
     </div>
     <div id="buttonsDiv">
         <input type="button" id="saveButton" value="@(string.IsNullOrEmpty(Model.ID) ? "Create" : "Update")" data-bind="click: saveCard"/>
