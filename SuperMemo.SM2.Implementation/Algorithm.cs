@@ -39,7 +39,7 @@ namespace SuperMemo.SM2.Implementation
 
         private static Card UpdateCard(Card card, Score score)
         {
-            card.LastTrainingDate = DateTime.UtcNow.Date;
+            card.LastTrainingDate = DateTime.UtcNow;
             card.Score = score;
             card.NumberOfRepetitions++;
             //If None - return interval

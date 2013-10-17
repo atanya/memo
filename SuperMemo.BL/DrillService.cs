@@ -18,7 +18,7 @@ namespace SuperMemo.BL
         public List<Card> GetCardsForDrill(string ownerID)
         {
             var dateTime = DateTime.UtcNow.Date.AddDays(1);
-            return cardRepo.All().Where(card => card.NextDate < dateTime && card.Owner.Id == ownerID).ToList();
+            return cardRepo.All().Where(card => card.NextDate < dateTime && card.Owner.Id == ownerID).OrderBy(c => c.LastTrainingDate).ToList();
         }
 
         public void UpdateCard(Card card, string ownerID)
