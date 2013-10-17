@@ -22,12 +22,12 @@
     },
     
     onFailure: function() {
-        superMemo.proxy.showError(techError);
+        superMemo.proxy.showError(superMemo.proxy.techError);
     },
     
     onSuccess: function (response, onSuccessCallback) {
         if (!response || !response.status) {
-            var error = response ? response.data || techError : techError;
+            var error = response ? response.data || superMemo.proxy.techError : superMemo.proxy.techError;
             superMemo.proxy.showError(error);
         } else {
             onSuccessCallback(response);

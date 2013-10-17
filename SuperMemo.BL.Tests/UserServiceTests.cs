@@ -15,6 +15,7 @@ namespace SuperMemo.BL.Tests
     public class MongoDate
     {
         [Test]
+        [Ignore]
         public void TestFilter()
         {
             var cardRepo = new MongoRepository<Card>();
