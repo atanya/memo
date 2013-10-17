@@ -3,17 +3,22 @@
     <head>
         <meta charset="utf-8" />
         <title>Memo</title>
-        <link href="@Url.Content("~/Skins/Styles/styles.css")" rel="stylesheet" type="text/css" />
-        <link href="@Url.Content("~/Skins/Styles/bootstrap.min.css")" rel="stylesheet" media="screen">
+        <link href="@Url.Content("~/Skins/Styles/login.css")" rel="stylesheet" type="text/css" />
+        <link href="@Url.Content("~/Scripts/bootstrap/css/bootstrap.min.css")" rel="stylesheet" media="screen">
+        <link href="@Url.Content("~/Scripts/JQueryUI/css/redmond/jquery-ui-1.10.3.custom.min.css")" rel="stylesheet" media="screen">
         <script type="text/javascript" src="@Url.Content("~/Scripts/jquery-1.9.1.min.js")"></script>
         <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.validate.min.js")"></script>
         <script type="text/javascript" src="@Url.Content("~/Scripts/namespace.js")"></script>
         <script type="text/javascript" src="@Url.Content("~/Scripts/proxy.js")"></script>
         <script type="text/javascript" src="@Url.Content("~/Scripts/knockout-2.2.1.js")"></script>
-        <script type="text/javascript" src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
+        <script type="text/javascript" src="@Url.Content("~/Scripts/knockout.mapping-latest.js")"></script>
+        <script type="text/javascript" src="@Url.Content("~/Scripts/waiter-min.js")"></script>
+        <script type="text/javascript" src="@Url.Content("~/Scripts/bootstrap/js/bootstrap.min.js")"></script>
+        <script type="text/javascript" src="@Url.Content("~/Scripts/JQueryUI/js/jquery-ui-1.10.3.custom.min.js")"></script>
     </head>
     <body>
-        <h1>Memo</h1>
-        @RenderBody()
+        <div class="container">
+            @RenderBody()
+        </div>
     </body>
 </html>

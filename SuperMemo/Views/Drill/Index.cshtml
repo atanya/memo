@@ -14,7 +14,7 @@
         <hr />
         <div>
             <a href="#" id="answerLink">Show answer</a>
-            <span id="transPlace" data-bind="text: currentTrans" style="display: none;"></span>
+            <div id="transPlace" style="display: none;"><span data-bind="text: currentTrans"></span><span> (<a href="#" data-bind="click: editCard">Edit</a>)</span></div>
         </div>
         <div style="margin-top: 30px;">
             <button id="againBtn" class="btn btn-danger">Again</button>

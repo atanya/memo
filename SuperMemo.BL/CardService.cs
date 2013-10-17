@@ -60,7 +60,7 @@ namespace SuperMemo.BL
 
         public List<Card> List(string ownerID)
         {
-            return cardRepo.All(c => c.Owner.Id == ownerID).ToList();
+            return cardRepo.All(c => c.Owner.Id == ownerID).OrderBy(c => c.Word).ToList();
         }
         
         //Restrict for admins

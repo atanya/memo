@@ -32,8 +32,13 @@
         alert("Fail");
     },
 
-    load: function() {
-        superMemo.proxy.loadList(superMemo.Card.onLoadSuccessCallback, superMemo.Card.onLoadFailureCallback);
+    onLoadCompleteCallback: function (response) {
+        window.waiter.hide({ targetId: 'body' });
+    },
+
+    load: function () {
+        window.waiter.show({ targetId: 'body' });
+        superMemo.proxy.loadList(superMemo.Card.onLoadSuccessCallback, superMemo.Card.onLoadFailureCallback, superMemo.Card.onLoadCompleteCallback);
     }
 };
 superMemo.Card.load();

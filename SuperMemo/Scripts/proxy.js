@@ -1,5 +1,5 @@
 ﻿window.superMemo.proxy = {
-    sendAjaxRequest : function(url, type, data, onSuccessCallback, onFailureCallback) {
+    sendAjaxRequest : function(url, type, data, onSuccessCallback, onFailureCallback, onCompleteCallback) {
         var jsonRequest = data ? JSON.stringify(data) : '';
         $.ajax({
             url: url,
@@ -8,7 +8,13 @@
             contentType: 'application/json; charset=utf-8',
             dataType: 'json',
             success: onSuccessCallback,
-            error: onFailureCallback
+            error: onFailureCallback,
+            complete: onCompleteCallback,
+            statusCode: {
+                401: function () { //Unauthorized
+                    window.location.href = window.movieService.environment.baseUrl;
+                }
+            }
         });
     },
     saveCup: function (id, word, translation, onSuccessCallback, onFailureCallback) {
@@ -28,9 +34,9 @@
         this.sendAjaxRequest('/SuperMemo/api/main/' + id, 'DELETE', null, onSuccessCallback, onFailureCallback);
     },
     
-    getNextWord: function (onSuccessCallback, onFailureCallback) {
+    getNextWord: function (onSuccessCallback, onFailureCallback, onCompleteCallback) {
         //this.sendAjaxRequest(window.superMemo.urls.getNextWord, 'POST', data, onSuccessCallback, onFailureCallback);
-        this.sendAjaxRequest('/SuperMemo/api/training', 'GET', null, onSuccessCallback, onFailureCallback);
+        this.sendAjaxRequest('/SuperMemo/api/training', 'GET', null, onSuccessCallback, onFailureCallback, onCompleteCallback);
     },
     
     sendAnswer: function (id, answer, onSuccessCallback, onFailureCallback) {
@@ -41,12 +47,12 @@
         this.sendAjaxRequest('/SuperMemo/api/training/' + id, 'PUT', answer, onSuccessCallback, onFailureCallback);
     },
     
-    loadList: function (onSuccessCallback, onFailureCallback) {
-        this.sendAjaxRequest('/SuperMemo/api/main', 'GET', null, onSuccessCallback, onFailureCallback);
+    loadList: function (onSuccessCallback, onFailureCallback, onCompleteCallback) {
+        this.sendAjaxRequest('/SuperMemo/api/main', 'GET', null, onSuccessCallback, onFailureCallback, onCompleteCallback);
     },
 
-    loadCard: function (id, onSuccessCallback, onFailureCallback) {
-        this.sendAjaxRequest('/SuperMemo/api/main/' + id, 'GET', null, onSuccessCallback, onFailureCallback);
+    loadCard: function (id, onSuccessCallback, onFailureCallback, onCompleteCallback) {
+        this.sendAjaxRequest('/SuperMemo/api/main/' + id, 'GET', null, onSuccessCallback, onFailureCallback, onCompleteCallback);
     },
     
     getTranslation: function (word, onSuccessCallback, onFailureCallback) {

@@ -5,26 +5,20 @@
     Layout = "~/Views/Shared/_NonLoggedLayout.cshtml";
 }
 
-@if (Model != null && Model.ErrorMessage != null)
+@using (Html.BeginForm("Register", "Authorization", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-signin" }))
 {
-    <p>
-        <span>@Model.ErrorMessage</span>
-    </p>
-}
-
-@using (Html.BeginForm())
-{
-    <p><span>Имя:</span></p>
-    <p>
-        @Html.TextBoxFor(m => m.UserName)
+    <h2 class="form-signin-heading">Create user</h2>
+    <div style="margin-bottom: 10px">
+        @Html.TextBoxFor(m => m.UserName, new {@class = "form-control", placeholder = "Username"})
         @Html.ValidationMessageFor(m => m.UserName)
-    </p>
-    <p><span>Пароль:</span></p>
-    <p>
-        @Html.TextBoxFor(m => m.Password, new {type = "password"})
+        @Html.TextBoxFor(m => m.Password, new {type = "password", @class = "form-control", placeholder = "Password"})
         @Html.ValidationMessageFor(m => m.Password)
-    </p>
-    <p>
-        <button type="submit">Создать</button>
-    </p>
+    </div>
+    if (Model != null && Model.ErrorMessage != null)
+    {
+        <p>
+            <span style="color: red;">@Model.ErrorMessage</span>
+        </p>
+    }
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Create</button>
 }

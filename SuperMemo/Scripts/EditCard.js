@@ -97,10 +97,15 @@
     onLoadFailureCallback: function (response) {
         alert("Fail");
     },
+
+    onLoadCompleteCallback: function (response) {
+        window.waiter.hide({ targetId: 'body' });
+    },
     
     loadCard: function (id) {
         if (id) {
-            superMemo.proxy.loadCard(id, superMemo.EditCard.onLoadCardSuccessCallback, superMemo.EditCard.onLoadFailureCallback);
+            window.waiter.show({ targetId: 'body' });
+            superMemo.proxy.loadCard(id, superMemo.EditCard.onLoadCardSuccessCallback, superMemo.EditCard.onLoadFailureCallback, superMemo.EditCard.onLoadCompleteCallback);
         } else {
             superMemo.EditCard.applyBindings(superMemo.EditCard.defaultViewModel());
         }

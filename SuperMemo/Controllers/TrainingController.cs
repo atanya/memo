@@ -6,6 +6,7 @@ using SuperMemo.SM2.Implementation;
 
 namespace SuperMemo.Controllers
 {
+    [Authorize]
     public class TrainingController : ApiController
     {
         // GET api/training - get next card for training

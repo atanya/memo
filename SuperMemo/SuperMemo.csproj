@@ -179,8 +179,10 @@
     <Content Include="Scripts\knockout.mapping-latest.js" />
     <Content Include="Scripts\namespace.js" />
     <Content Include="Scripts\proxy.js" />
+    <Content Include="Scripts\waiter-min.js" />
     <Content Include="Skins\Images\glyphicons-halflings-white.png" />
     <Content Include="Skins\Images\glyphicons-halflings.png" />
+    <Content Include="Skins\Styles\login.css" />
     <Content Include="Skins\Styles\styles.css">
       <DependentUpon>styles.scss</DependentUpon>
     </Content>
@@ -217,7 +219,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Home\Index.cshtml" />
     <ProjectReference Include="..\DomainModel\DomainModel.csproj">
       <Project>{ae99d246-863d-42f2-9743-fa651ee5ab54}</Project>
       <Name>DomainModel</Name>

@@ -4,6 +4,7 @@ using SuperMemo.BL;
 
 namespace SuperMemo.Controllers
 {
+    [Authorize]
     public class TranslatorController : ApiController
     {
         public List<string> Get(string id)

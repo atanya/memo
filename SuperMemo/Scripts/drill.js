@@ -4,7 +4,11 @@
         currentWord: ko.observable(),
         currentTrans: ko.observable(),
         totalWords: ko.observable(),
-        numberToRepeat: ko.observable()
+        numberToRepeat: ko.observable(),
+        
+        editCard: function() {
+            window.location = superMemo.urls.editCard + "/" + this.wordID();
+        }
     };
 
     var init = function () {
@@ -43,10 +47,13 @@
 
     var getNextWord = function () {
         showAnswer(false);
+        window.waiter.show({ targetId: 'body' });
         superMemo.proxy.getNextWord(function (result) {
             bindData(result);
         }, function (result) {
             alert("failure");
+        }, function() {
+            window.waiter.hide({ targetId: 'body' });
         });
     };
 

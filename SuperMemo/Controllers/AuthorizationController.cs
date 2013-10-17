@@ -45,7 +45,7 @@ namespace SuperMemo.Controllers
             }
             else
             {
-                loginInfo.ErrorMessage = "Нет пользователя с таким именем/паролем.";
+                loginInfo.ErrorMessage = "User not found.";
                 return View(loginInfo);
             }
             return Json("");
@@ -77,7 +77,7 @@ namespace SuperMemo.Controllers
                 var user = _userService.FindByName(loginInfo.UserName);
                 if (user != null)
                 {
-                    loginInfo.ErrorMessage = "Пользователь с таким именем уже существует.";
+                    loginInfo.ErrorMessage = "User already exists.";
                     return View(loginInfo);
                 }
                 _userService.Create(loginInfo.UserName, loginInfo.Password);
