@@ -11,8 +11,6 @@
                 var id = superMemo.Card.viewModel.getCardID(event.currentTarget);
                 superMemo.proxy.removeCup(id, function(result) {
                     location.reload();
-                }, function(result) {
-                    alert("failure");
                 });
             }
         },
@@ -38,7 +36,7 @@
 
     load: function () {
         window.waiter.show({ targetId: 'body' });
-        superMemo.proxy.loadList(superMemo.Card.onLoadSuccessCallback, superMemo.Card.onLoadFailureCallback, superMemo.Card.onLoadCompleteCallback);
+        superMemo.proxy.loadList(superMemo.Card.onLoadSuccessCallback, superMemo.Card.onLoadCompleteCallback);
     }
 };
 superMemo.Card.load();

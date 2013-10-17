@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Web.Http;
 using SuperMemo.BL;
+using SuperMemo.Filters;
 using SuperMemo.Models;
 
 namespace SuperMemo.Controllers
 {
     [Authorize]
+    [ErrorHandler]
     public class TranslatorController : ApiController
     {
         public ResponseObject Get(string id)

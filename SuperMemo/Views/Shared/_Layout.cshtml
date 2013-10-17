@@ -48,13 +48,17 @@
             <ul class="nav navbar-nav navbar-right">
               <li>@Html.ActionLink(@User.Identity.Name + " (Logout)" ,"Logout", "Authorization")</li>
             </ul>
-          </div><!-- /.navbar-collapse -->
+          </div>
         </nav>
 
         <div class="container">
+            <div class="alert alert-danger alert-dismissable" style="display: none;" id="errorDiv">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <span id="errorText"></span>
+            </div>
             @RenderBody()
         </div>
-        
+ 
         <script>
             $(function() {
                 $("#mainMenuLinks li").removeClass("active");
@@ -62,6 +66,7 @@
                 if (navID) {
                     $("#" + navID).addClass("active");
                 }
+                $("#errorDiv").hide();
             });
         </script>
     </body>

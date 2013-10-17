@@ -30,8 +30,6 @@
         var wordId = viewModel.wordID();
         superMemo.proxy.sendAnswer(wordId, event.data, function(result) {
             getNextWord();
-        }, function(result) {
-            alert("failure");
         });
     };
 
@@ -50,8 +48,6 @@
         window.waiter.show({ targetId: 'body' });
         superMemo.proxy.getNextWord(function (result) {
             bindData(result.data);
-        }, function (result) {
-            alert("failure");
         }, function() {
             window.waiter.hide({ targetId: 'body' });
         });

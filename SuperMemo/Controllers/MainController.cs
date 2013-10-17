@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Web.Http;
 using DTO;
 using SuperMemo.BL;
+using SuperMemo.Filters;
 using SuperMemo.Models;
 
 namespace SuperMemo.Controllers
 {
     [Authorize]
+    [ErrorHandler]
     public class MainController : ApiController
     {
         // GET api/<controller> - return list of cards

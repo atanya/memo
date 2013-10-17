@@ -128,6 +128,7 @@
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Controllers\TrainingController.cs" />
     <Compile Include="Controllers\TranslatorController.cs" />
+    <Compile Include="Filters\ErrorHandlerAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

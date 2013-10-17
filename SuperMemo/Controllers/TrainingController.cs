@@ -2,12 +2,14 @@
 using DTO;
 using SuperMemo.BL;
 using SuperMemo.DomainModel;
+using SuperMemo.Filters;
 using SuperMemo.Models;
 using SuperMemo.SM2.Implementation;
 
 namespace SuperMemo.Controllers
 {
     [Authorize]
+    [ErrorHandler]
     public class TrainingController : ApiController
     {
         // GET api/training - get next card for training

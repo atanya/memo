@@ -8,7 +8,7 @@
                 var self = superMemo.EditCard;
                 var translitted = self.translitString(request.term);
                 if (self.viewModel.word()) {
-                    superMemo.proxy.getTranslation(self.viewModel.word(), function(result) { self.processAutocomplete(result.data, response, translitted); }, function(result) { alert(result); });
+                    superMemo.proxy.getTranslation(self.viewModel.word(), function(result) { self.processAutocomplete(result.data, response, translitted); });
                 } else {
                     response([translitted]);
                 }
@@ -64,8 +64,6 @@
             superMemo.EditCard.showErrorMessage("Card saved");
             vm.word("");
             vm.translation("");
-        }, function (result) {
-            alert("failure");
         });
     },
 
@@ -94,10 +92,6 @@
         
     },
 
-    onLoadFailureCallback: function (response) {
-        alert("Fail");
-    },
-
     onLoadCompleteCallback: function (response) {
         window.waiter.hide({ targetId: 'body' });
     },
@@ -105,7 +99,7 @@
     loadCard: function (id) {
         if (id) {
             window.waiter.show({ targetId: 'body' });
-            superMemo.proxy.loadCard(id, superMemo.EditCard.onLoadCardSuccessCallback, superMemo.EditCard.onLoadFailureCallback, superMemo.EditCard.onLoadCompleteCallback);
+            superMemo.proxy.loadCard(id, superMemo.EditCard.onLoadCardSuccessCallback, superMemo.EditCard.onLoadCompleteCallback);
         } else {
             superMemo.EditCard.applyBindings(superMemo.EditCard.defaultViewModel());
         }
