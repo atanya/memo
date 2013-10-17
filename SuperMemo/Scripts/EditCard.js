@@ -8,7 +8,7 @@
                 var self = superMemo.EditCard;
                 var translitted = self.translitString(request.term);
                 if (self.viewModel.word()) {
-                    superMemo.proxy.getTranslation(self.viewModel.word(), function(result) { self.processAutocomplete(result, response, translitted); }, function(result) { alert(result); });
+                    superMemo.proxy.getTranslation(self.viewModel.word(), function(result) { self.processAutocomplete(result.data, response, translitted); }, function(result) { alert(result); });
                 } else {
                     response([translitted]);
                 }
@@ -90,7 +90,7 @@
     },
     
     onLoadCardSuccessCallback: function (response) {
-        superMemo.EditCard.applyBindings(ko.mapping.fromJS(response));
+        superMemo.EditCard.applyBindings(ko.mapping.fromJS(response.data));
         
     },
 

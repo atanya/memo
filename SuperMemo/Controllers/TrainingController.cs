@@ -2,6 +2,7 @@
 using DTO;
 using SuperMemo.BL;
 using SuperMemo.DomainModel;
+using SuperMemo.Models;
 using SuperMemo.SM2.Implementation;
 
 namespace SuperMemo.Controllers
@@ -10,7 +11,7 @@ namespace SuperMemo.Controllers
     public class TrainingController : ApiController
     {
         // GET api/training - get next card for training
-        public TrainingDto Get()
+        public ResponseObject Get()
         {
             var currentUser = new UserService().FindByName(User.Identity.Name);
             var cardService = new CardService();
@@ -25,7 +26,7 @@ namespace SuperMemo.Controllers
                 currentCard = cards[0];
             }
             
-            return new TrainingDto(currentCard, total, cards.Count);
+            return ResponseObject.Success(new TrainingDto(currentCard, total, cards.Count));
         }
 
         // PUT api/training/5 - update card

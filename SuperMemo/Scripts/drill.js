@@ -49,7 +49,7 @@
         showAnswer(false);
         window.waiter.show({ targetId: 'body' });
         superMemo.proxy.getNextWord(function (result) {
-            bindData(result);
+            bindData(result.data);
         }, function (result) {
             alert("failure");
         }, function() {

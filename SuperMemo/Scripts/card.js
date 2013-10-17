@@ -24,7 +24,7 @@
     },
 
     onLoadSuccessCallback: function(response) {
-        superMemo.Card.viewModel.cards = response;
+        superMemo.Card.viewModel.cards = response.data;
         ko.applyBindings(superMemo.Card.viewModel, document.getElementById('cardList'));
     },
 
