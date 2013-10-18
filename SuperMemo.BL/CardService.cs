@@ -14,7 +14,8 @@ namespace SuperMemo.BL
 
         public CardService()
         {
-            cardRepo = new MongoRepository<Card>();
+            var connectionstring = ConfigurationManager.AppSettings.Get("MONGOLAB_URI"); // for appharbor
+            cardRepo = string.IsNullOrEmpty(connectionstring) ? new MongoRepository<Card>() : new MongoRepository<Card>(connectionstring);
         }
 
         public string Save(string id, string word, string translation, User owner)

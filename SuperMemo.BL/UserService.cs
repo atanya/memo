@@ -12,7 +12,8 @@ namespace SuperMemo.BL
 
         public UserService()
         {
-            _userRepo = new MongoRepository<User>();
+            var connectionstring = ConfigurationManager.AppSettings.Get("MONGOLAB_URI"); // for appharbor
+            _userRepo = string.IsNullOrEmpty(connectionstring) ? new MongoRepository<User>() : new MongoRepository<User>(connectionstring);
         }
 
         public User FindByNameAndPassword(string userName, string password)

@@ -19,7 +19,10 @@
         
     <script type="text/javascript">
         superMemo.urls = {
-            editCard: '@Url.Action("Edit", "Card")'
+            editCard: '@Url.Action("Edit", "Card")',
+            mainController: '@Url.RouteUrl("DefaultApi", new { httproute = "", controller = "main", })',
+            trainingController: '@Url.RouteUrl("DefaultApi", new { httproute = "", controller = "training", })',
+            translatorController: '@Url.RouteUrl("DefaultApi", new { httproute = "", controller = "translator", })'
         };
     </script>
     </head>

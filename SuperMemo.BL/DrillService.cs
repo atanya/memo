@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using MongoRepository;
 using SuperMemo.DomainModel;
@@ -12,7 +13,8 @@ namespace SuperMemo.BL
 
         public DrillService()
         {
-            cardRepo = new MongoRepository<Card>();
+            var connectionstring = ConfigurationManager.AppSettings.Get("MONGOLAB_URI"); // for appharbor
+            cardRepo = string.IsNullOrEmpty(connectionstring) ? new MongoRepository<Card>() : new MongoRepository<Card>(connectionstring);
         }
 
         public List<Card> GetCardsForDrill(string ownerID)
