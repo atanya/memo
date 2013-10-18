@@ -9,6 +9,9 @@
 <input type="hidden" value="navAdd" id="navID"/>
 <h2>@(string.IsNullOrEmpty(Model.ID)?"Create":"Update") Card</h2>
 <div id="cardContentWrapper">
+    <div class="alert alert-success alert-dismissable" style="display: none;" id="savedMessageDiv">
+        Card is saved
+    </div>
     <input type="hidden" value="@Model.ID" id="WordID"/>
     <div id="wordDiv" class="form-group">
         <label for="wordInput">Word</label>

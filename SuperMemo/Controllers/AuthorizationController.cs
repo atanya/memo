@@ -30,10 +30,10 @@ namespace SuperMemo.Controllers
         [AllowAnonymous]
         public ActionResult Login(LoginInfoModel loginInfo, string returnUrl)
         {
-            var isAuth = Authorize(loginInfo);
-            if (isAuth)
+            var user = Authorize(loginInfo);
+            if (user != null)
             {
-                FormsAuthentication.SetAuthCookie(loginInfo.UserName, false);
+                FormsAuthentication.SetAuthCookie(user.Name, false);
                 if (Url.IsLocalUrl(returnUrl))
                 {
                     return Redirect(returnUrl);
@@ -56,10 +56,10 @@ namespace SuperMemo.Controllers
             return RedirectToAction("Index", "Drill");
         }
 
-        private bool Authorize(LoginInfoModel loginInfo)
+        private User Authorize(LoginInfoModel loginInfo)
         {
             var user = _userService.FindByNameAndPassword(loginInfo.UserName, loginInfo.Password);
-            return user != null;
+            return user;
         }
 
         [AllowAnonymous]

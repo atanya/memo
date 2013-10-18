@@ -43,7 +43,7 @@ namespace SuperMemo.BL
         private static string ComputeMd5Hash(string userName, string password)
         {
             var md5 = new MD5CryptoServiceProvider();
-            var hashBytes = md5.ComputeHash(Encoding.UTF8.GetBytes(userName + password));
+            var hashBytes = md5.ComputeHash(Encoding.UTF8.GetBytes(userName.ToLower() + password));
             
             var sBuilder = new StringBuilder();
 

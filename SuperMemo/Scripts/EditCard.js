@@ -18,6 +18,7 @@
                 $(this).val(ui.item.value).change();
             }
         });
+        $("#savedMessageDiv").hide();
     },
     
     translitString: function(str) {
@@ -61,9 +62,12 @@
             return;
         }
         superMemo.proxy.saveCup(vm.id(), vm.word(), vm.translation(), function (result) {
-            superMemo.EditCard.showErrorMessage("Card saved");
             vm.word("");
             vm.translation("");
+            $("#savedMessageDiv").show();
+            if ($("#WordID").val()) {
+                window.location.href = superMemo.urls.listUrl;
+            }
         });
     },
 

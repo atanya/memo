@@ -15,7 +15,7 @@
             complete: onCompleteCallback,
             statusCode: {
                 401: function () { //Unauthorized
-                    window.location.href = window.movieService.environment.baseUrl;
+                    window.location.href = superMemo.urls.loginUrl;
                 }
             }
         });
