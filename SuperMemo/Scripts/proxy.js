@@ -26,8 +26,8 @@
     },
     
     onSuccess: function (response, onSuccessCallback) {
-        if (!response || !response.status) {
-            var error = response ? response.data || superMemo.proxy.techError : superMemo.proxy.techError;
+        if (response && !response.status) {
+            var error = response.data || superMemo.proxy.techError;
             superMemo.proxy.showError(error);
         } else {
             onSuccessCallback(response);
