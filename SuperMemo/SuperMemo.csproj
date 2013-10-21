@@ -112,7 +112,7 @@
       <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
     <Reference Include="WebApiContrib.Formatting.Jsonp">
-      <HintPath>..\packages\WebApiContrib.Formatting.Jsonp.0.9.6.0\lib\net40\WebApiContrib.Formatting.Jsonp.dll</HintPath>
+      <HintPath>..\ExtLib\WebApiContrib.Formatting.Jsonp.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

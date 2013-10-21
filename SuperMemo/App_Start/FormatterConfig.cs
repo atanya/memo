@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using WebApiContrib.Formatting.Jsonp;
 
+
 namespace SuperMemo.App_Start
 {
     public class FormatterConfig
@@ -20,8 +21,8 @@ namespace SuperMemo.App_Start
             };
 
             //// Insert the JSONP formatter in front of the standard JSON formatter.
-            //var jsonpFormatter = new JsonpMediaTypeFormatter(formatters.JsonFormatter);
-            //formatters.Insert(0, jsonpFormatter);
+            var jsonpFormatter = new JsonpMediaTypeFormatter(formatters.JsonFormatter);
+            formatters.Insert(0, jsonpFormatter);
         }
     }
 }
