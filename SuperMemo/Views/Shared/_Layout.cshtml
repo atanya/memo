@@ -23,6 +23,7 @@
             mainController: '@Url.RouteUrl("DefaultApi", new { httproute = "", controller = "main", })',
             trainingController: '@Url.RouteUrl("DefaultApi", new { httproute = "", controller = "training", })',
             translatorController: '@Url.RouteUrl("DefaultApi", new { httproute = "", controller = "translator", })',
+            userController: '@Url.RouteUrl("DefaultApi", new { httproute = "", controller = "UserInfo", })',
             loginUrl: '@Url.Action("Login", "Authorization")',
             listUrl: '@Url.Action("List", "Card")'
         };
@@ -51,14 +52,14 @@
               <li id="navAdd">@Html.ActionLink("Add card", "Create", "Card")</li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              <li>@Html.ActionLink(@User.Identity.Name + " (Logout)" ,"Logout", "Authorization")</li>
+              <li>@Html.ActionLink(@User.Identity.Name ,"Profile", "User")</li>
+              <li>@Html.ActionLink(" (Logout)" ,"Logout", "Authorization")</li>
             </ul>
           </div>
         </nav>
 
         <div class="container">
             <div class="alert alert-danger alert-dismissable" style="display: none;" id="errorDiv">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                 <span id="errorText"></span>
             </div>
             @RenderBody()

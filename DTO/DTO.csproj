@@ -46,6 +46,7 @@
     <Compile Include="CardDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TrainingDto.cs" />
+    <Compile Include="UserDto.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DomainModel\DomainModel.csproj">

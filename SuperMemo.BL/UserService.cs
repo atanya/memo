@@ -34,6 +34,13 @@ namespace SuperMemo.BL
             
             _userRepo.Add(new User {Name = userName, PasswordHash = passwordHash});
         }
+        
+        public void Update(string id, string password)
+        {
+            var user = _userRepo.GetById(id);
+            user.PasswordHash = ComputeMd5Hash(user.Name, password);
+            _userRepo.Update(user);
+        }
 
         public User FindByName(string userName)
         {

@@ -128,6 +128,8 @@
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Controllers\TrainingController.cs" />
     <Compile Include="Controllers\TranslatorController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\UserInfoController.cs" />
     <Compile Include="Filters\ErrorHandlerAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -181,6 +183,7 @@
     <Content Include="Scripts\knockout.mapping-latest.js" />
     <Content Include="Scripts\namespace.js" />
     <Content Include="Scripts\proxy.js" />
+    <Content Include="Scripts\user.js" />
     <Content Include="Scripts\waiter-min.js" />
     <Content Include="Skins\Images\glyphicons-halflings-white.png" />
     <Content Include="Skins\Images\glyphicons-halflings.png" />
@@ -204,6 +207,7 @@
     <Content Include="Views\Drill\Index.cshtml" />
     <Content Include="Views\Admin\Dump.cshtml" />
     <Content Include="Views\Shared\_NonLoggedLayout.cshtml" />
+    <Content Include="Views\User\Profile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

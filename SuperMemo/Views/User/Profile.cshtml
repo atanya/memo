@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "User profile";
+}
+<script type="text/javascript" src="@Url.Content("~/Scripts/user.js")"></script>
+
+<h2>User profile: @User.Identity.Name</h2>
+
+<div class="alert alert-success" style="display: none;" id="changeAlert">Password is changed</div>
+
+<div class="form-inline" role="form">
+    <div class="form-group" id="oldContainer">
+        <label class="sr-only" for="oldPassword">Old password</label>
+        <input type="password" class="form-control" id="oldPassword" placeholder="Old password">
+    </div>
+    <div class="form-group" id="newContainer">
+        <label class="sr-only" for="newPassword">New password</label>
+        <input type="password" class="form-control" id="newPassword" placeholder="New Password">
+    </div>
+    <button class="btn btn-default" id="updateUser">Change</button>
+</div>
+<script>
+    $(function () {
+        superMemo.User.init();
+    });
+</script>

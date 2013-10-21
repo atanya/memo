@@ -26,10 +26,6 @@
         ko.applyBindings(superMemo.Card.viewModel, document.getElementById('cardList'));
     },
 
-    onLoadFailureCallback: function(response) {
-        alert("Fail");
-    },
-
     onLoadCompleteCallback: function (response) {
         window.waiter.hide({ targetId: 'body' });
     },

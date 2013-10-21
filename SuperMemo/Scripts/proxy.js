@@ -80,4 +80,12 @@
     getTranslation: function (word, onSuccessCallback, onFailureCallback) {
         this.sendAjaxRequest(superMemo.urls.translatorController + "/" + word, 'GET', null, onSuccessCallback, onFailureCallback);
     },
+    
+    updateUser: function (oldPassword, newPassword, onSuccessCallback, onCompleteCallback) {
+        var data = {
+            OldPassword: oldPassword,
+            NewPassword: newPassword
+        };
+        this.sendAjaxRequest(superMemo.urls.userController, 'POST', data, onSuccessCallback, null, onCompleteCallback);
+    }
 };
