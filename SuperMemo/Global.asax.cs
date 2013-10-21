@@ -9,7 +9,6 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
 using SuperMemo.App_Start;
-using WebApiContrib.Formatting.Jsonp;
 
 namespace SuperMemo
 {

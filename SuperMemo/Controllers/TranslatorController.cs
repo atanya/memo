@@ -6,7 +6,6 @@ using SuperMemo.Models;
 
 namespace SuperMemo.Controllers
 {
-    [Authorize]
     [ErrorHandler]
     public class TranslatorController : ApiController
     {
