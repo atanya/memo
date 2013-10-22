@@ -1,5 +1,5 @@
 <!ENTITY mysupermemo.label "Your localized menuitem">
-<!ENTITY mysupermemoContext.label "Your Menuitem">
+<!ENTITY mysupermemoContext.label "Translate with memo">
 <!ENTITY mysupermemoContext.accesskey "Y">
 <!ENTITY mysupermemoToolbarButton.label "Your Toolbar Button">
 <!ENTITY mysupermemoToolbarButton.tooltip "This is your toolbar button!">

@@ -4,6 +4,34 @@
   <script src="jquery-1.9.1.min.js"></script>
   <script src="knockout-2.2.1.js"></script>
   <script src="ff-overlay.js"></script>
+  <script type="text/javascript">
+  $(function(){
+	  $("#testBtn").click(function(){
+		var selectedWord = content.getSelection().toString().trim() || 'cup';
+		var urlWIthValue = 'http://mysupermemo.com/api/Translator/' + selectedWord;
+				$.ajax({
+					url: urlWIthValue,
+					type: "GET",
+					dataType: "jsonp",
+					contentType: "application/json; charset=utf-8",
+					complete: function(xhr, textStatus)
+					  {
+					  alert('c' + textStatus);
+					  }
+					//beforeSend: setHeader,
+					//success: function (data) {
+					//	alert(1);
+					//	alert(data.data);
+					//	//mysupermemo.showFirefoxContextMenu(data, selectedWord.anchorNode.parentElement);
+					//},
+					//error: function (xhr, textStatus, errorThrown) {
+					//	alert('request failed');
+					//	alert("XMLHttpRequest=" + xhr.responseText + "\ntextStatus=" + textStatus + "\nerrorThrown=" + errorThrown);
+					//}
+				});
+	  });
+  });
+  </script>
     <style>
     #memoDialog{
    
@@ -12,7 +40,7 @@
 <body>
 
 <div>cup. If there is more than one target element, however, cloned copies of the inserted element will be created for each target after the first.</div>
-
+<button id="testBtn" value="test" >Test</button>
 
 <!--<div id="memoDialog" style="left: 427px; top: 1003px; display: block; background: none repeat scroll 0 0 #FFFFFF !important;
     border: 1px solid #CCCCCC !important;
