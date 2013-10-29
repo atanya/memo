@@ -9,6 +9,7 @@ namespace SuperMemo.Controllers
     [ErrorHandler]
     public class TranslatorController : ApiController
     {
+        [AllowAnonymous]
         public ResponseObject Get(string id)
         {
             var result = new Translator().Translate(id);
