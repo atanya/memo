@@ -6,6 +6,7 @@
   "version": "1.0",
   "permissions": [
     "contextMenus",
+	"tabs",
 	"http://supermemo.apphb.com/",
 	"http://supermemo.apphb.com/api/translator"
   ],

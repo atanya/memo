@@ -12,6 +12,13 @@ function onClickHandler(info, tab) {
 					dataType: "json",
 					contentType: "application/json; charset=utf-8",
 					success: function (data) {
+			 chrome.windows.create({
+                url : "superMemoPopup.html?" + data.data,
+                type: 'popup',
+                focused: true,
+				width: 200,
+				height: 200
+            });
 						alert(data.data);
 					},
 					error: function (data) {
@@ -31,3 +38,20 @@ chrome.contextMenus.create({"title": "Translate with SuperMemo", "contexts":["se
                     "id": "contextselection"});      
 
 chrome.contextMenus.onClicked.addListener(onClickHandler);					
+/*chrome.runtime.onMessage.addListener(function(request) {
+    if (request.type === 'supermemo_translate') {
+        chrome.tabs.create({
+            url: chrome.extension.getURL('superMemoPopup.html'),
+            active: false
+        }, function(tab) {
+            // After the tab has been created, open a window to inject the tab
+            chrome.windows.create({
+                tabId: tab.id,
+                type: 'popup',
+                focused: true,
+				width: 200,
+				height: 200
+            });
+        });
+    }
+});*/
