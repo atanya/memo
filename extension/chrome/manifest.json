@@ -1,0 +1,20 @@
+{
+  "manifest_version": 2,
+
+  "name": "SuperMemo",
+  "description": "translate the word",
+  "version": "1.0",
+  "permissions": [
+    "contextMenus",
+	"http://supermemo.apphb.com/",
+	"http://supermemo.apphb.com/api/translator"
+  ],
+  "background": {
+    "persistent": false,
+    "scripts": ["superMemo.js", "jquery-1.9.1.min.js"]
+  },
+  "icons": {
+    "16": "flag.png"
+  },
+  "content_security_policy": "default-src 'none'; style-src 'self'; script-src 'self'; connect-src http://supermemo.apphb.com/;"
+}
