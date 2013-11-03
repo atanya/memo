@@ -1,14 +1,8 @@
 // The onClicked callback function.
 
-
-
-chrome.runtime.onInstalled.addListener(function() {
-var onClickHandler =function onClickHandler(info, tab) { 
-alert(1);
+function onClickHandler(info, tab) {
   if (info.menuItemId == "contextselection") {
-  alert(info.toString());
-  var selectedWord = 'cup';//window.getSelection().toString().trim();
-	alert(selectedWord);
+  var selectedWord = info.selectionText? info.selectionText.trim(): null;
         if (selectedWord) {
             var urlWithValue = 'http://supermemo.apphb.com/api/Translator/' + selectedWord;
 			try{
@@ -31,8 +25,9 @@ alert(1);
         }
 	}
 };
-  var context = "selection";
-    var title = "Translate with SuperMemo";
-    chrome.contextMenus.create({"title": title, "contexts":[context],
-                                         "id": "contextselection"}, onClickHandler);
-});
+
+
+chrome.contextMenus.create({"title": "Translate with SuperMemo", "contexts":["selection"],
+                    "id": "contextselection"});      
+
+chrome.contextMenus.onClicked.addListener(onClickHandler);					
